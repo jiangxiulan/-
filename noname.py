@@ -1,64 +1,124 @@
-# -*- coding: utf-8 -*- 
-
-###########################################################################
-## Python code generated with wxFormBuilder (version Jun 17 2015)
-## http://www.wxformbuilder.org/
-##
-## PLEASE DO "NOT" EDIT THIS FILE!
-###########################################################################
-
 import wx
-import wx.xrc
+import time
 
-###########################################################################
-## Class MyFrame1
-###########################################################################
+############
+Version="0.1"
+ReleaseDate="2020-7-5"
+############
 
-class MyFrame1 ( wx.Frame ):
-	
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-		
-		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
-		
-		bSizer2 = wx.BoxSizer( wx.VERTICAL )
-		
-		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText1.Wrap( -1 )
-		bSizer2.Add( self.m_staticText1, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		self.m_textCtrl2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.m_textCtrl2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText3.Wrap( -1 )
-		bSizer2.Add( self.m_staticText3, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		self.m_textCtrl3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.m_textCtrl3, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		self.m_button2 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.m_button2, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-		
-		
-		self.SetSizer( bSizer2 )
-		self.Layout()
-		self.m_menubar1 = wx.MenuBar( 0 )
-		self.SetMenuBar( self.m_menubar1 )
-		
-		self.m_statusBar1 = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
-		
-		self.Centre( wx.BOTH )
-		
-		# Connect Events
-		self.m_button2.Bind( wx.EVT_BUTTON, self.btn_submit )
-	
-	def __del__( self ):
-		pass
-	
-	
-	# Virtual event handlers, overide them in your derived class
-	def btn_submit( self, event ):
-		event.Skip()
-	
+ID_EXIT=200
+ID_ABOUT=201
+ID_MR=100
 
+class Mainframe(wx.Frame):
+    def __init__(self,parent,id,title):
+        wx.Frame.__init__(self,parent,id,title,size=(500,300))
+        ###########################################################
+        # 状态栏
+        self.setupStatusBar()
+        ###########################################################
+        ##创建菜单栏
+        self.setupMenuBar()
+
+
+        ###########################################################
+        # 显示按钮功能
+        self.initUI()
+
+    def initUI(self):
+        ###########################################################
+        # 显示按钮功能
+        self.buttonOK = wx.Button(self, -1, u"OK", (20, 20), (60, 30))
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.buttonOK)
+
+        self.buttonCancel = wx.Button(self, -1, u"Cancel", (20, 80), (60, 30))
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.buttonCancel)
+
+    def setupMenuBar(self):
+        ###########################################################
+        ##创建菜单栏
+        # 主菜单
+        menubar = wx.MenuBar()
+        # 子菜单
+        fmenu = wx.Menu()
+        fmenu.Append(ID_EXIT, u'退出(&Q)', 'Teminate the program')
+        # 将子菜单添加到文件中
+        menubar.Append(fmenu, u'文件(&F)')
+        # 子菜单：关于(About)
+        hmenu = wx.Menu()
+        # 将子菜单添加到帮助中
+        hmenu.Append(ID_ABOUT, u'关于(&A)', 'More information about this program')
+        menubar.Append(hmenu, u'帮助(&H)')
+        self.SetMenuBar(menubar)
+        # 菜单中子菜单，事件行为的绑定即实现
+        wx.EVT_MENU(self, ID_EXIT, self.OnMenuExit)
+        wx.EVT_MENU(self, ID_ABOUT, self.OnMenuAbout)
+        wx.EVT_CLOSE(self, self.OnCloseWindow)
+
+    def setupStatusBar(self):
+        ###########################################################
+        # 状态栏
+        sb = self.CreateStatusBar(2)
+        self.SetStatusWidths([-1, -2])
+        self.SetStatusText("Ready", 0)
+        # timer
+        self.timer = wx.PyTimer(self.Notify)
+        self.timer.Start(100, wx.TIMER_CONTINUOUS)
+        self.Notify()
+
+    def OnClick(self,event):
+        if event.GetEventObject()==self.buttonOK:
+            print("{}" .format(event.GetEventObject().GetLabel()))
+        elif event.GetEventObject()==self.buttonCancel:
+            print("{}".format(event.GetEventObject().GetLabel()))
+        else:
+            print("No Button is clicked")
+
+    def Notify(self):
+        t=time.localtime(time.time())
+        st=time.strftime('%Y-%m-%d  %H:%M:%S',t)
+        self.SetStatusText(st,1)
+
+    def OnMenuExit(self,event):
+        self.Close()
+
+    def OnMenuAbout(self,event):
+        dlg=AboutDialog(None,-1)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnCloseWindow(self,event):
+        self.Destroy()
+
+#定义一个对话框
+class AboutDialog(wx.Dialog):
+    def __init__(self,parent,id):
+        wx.Dialog.__init__(self,parent,id,'About Me',size=(200,200))
+
+        self.sizerl=wx.BoxSizer(wx.VERTICAL)
+        self.sizerl.Add(wx.StaticText(self,-1,u'wxPython初级教程'),
+                        0,wx.ALIGN_CENTER_HORIZONTAL|wx.Top,border=20)
+        self.sizerl.Add(wx.StaticText(self, -1, u'(C)2020 工作室))'),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
+        self.sizerl.Add(wx.StaticText(self, -1, u"Version,%s %s"%(Version,ReleaseDate)),
+                         0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
+        self.sizerl.Add(wx.StaticText(self, -1, u'Author:樊晓鑫'),
+                         0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
+        self.sizerl.Add(wx.Button(self, wx.ID_OK),0, wx.ALIGN_CENTER|wx.BOTTOM, border=20)
+        self.SetSizer(self.sizerl)
+
+class App(wx.App):
+    def __init__(self):
+        super(self.__class__,self).__init__()
+
+    def OnInit(self):
+        self.version=u"第二堂课"
+        self.title=u"wxPython初级教程之"+self.version
+        frame=Mainframe(None,-1,self.title)
+        frame.Show(True)
+
+        return True
+
+if __name__=="__main__":
+    app=App()
+    app.MainLoop()
