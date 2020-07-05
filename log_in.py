@@ -138,8 +138,8 @@ class App(wx.App):
     def OnInit(self):
         self.version=u"第二堂课"
         self.title=u"wxPython初级教程之"+self.version
-        frame=Mainframe(None,-1,self.title)
-        frame.Show(True)
+        self.frame=Mainframe(None,-1,self.title)
+        self.frame.Show(True)
 
         return True
 
