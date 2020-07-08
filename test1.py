@@ -8,6 +8,7 @@ ReleaseDate="2020-7-5"
 
 cwd=os.getcwd()
 
+
 ID_EXIT=200
 ID_ABOUT=201
 
@@ -32,12 +33,37 @@ class Mainframe(wx.Frame):
         ###########################################################
         # 面板显示
         self.panel=MyPanel(self, -1)
-        wx.StaticText(self.panel,label="Username",pos=(20,20))
-        wx.StaticText(self.panel,label="Password",pos=(20,50))
-        self.panel._username = wx.TextCtrl(self.panel, pos=(85, 15))
-        self.panel._password = wx.TextCtrl(self.panel, pos=(85, 45), style=wx.TE_PASSWORD)
-        self.panel.submit_btn = wx.Button(self.panel, label=u"提交", pos=(20, 80), size=(50, 30))
+        self.panel.text_username=wx.StaticText(self.panel,pos=(20,20),label="Username")
+        self.panel.text_passwd=wx.StaticText(self.panel,pos=(20,40),label="Password")
+        self.panel._username = wx.TextCtrl(self.panel)
+        self.panel._password = wx.TextCtrl(self.panel, style=wx.TE_PASSWORD)
+        self.panel.submit_btn = wx.Button(self.panel, label=u"提交", size=(50, 30))
         self.Bind(wx.EVT_BUTTON, self.panel.OnClick, self.panel.submit_btn)
+        myStyle = wx.EXPAND | wx.ALL
+
+        mainBox = wx.BoxSizer(wx.VERTICAL)
+
+        gs = wx.GridSizer(2,2,5,5)
+        gs.Add(self.panel.text_username)
+
+        #mainBox.Add(box1, 0, myStyle, broder=10)
+
+        gs.Add(self.panel._username)
+        gs.Add(self.panel.text_passwd)
+        gs.Add(self.panel._password)
+        mainBox.Add(gs, 0, myStyle)
+
+        box3 = wx.BoxSizer()
+        box3.Add(self.panel.submit_btn, 0, wx.EXPAND | wx.ALL, border=10)
+        mainBox.Add(box3, 0, myStyle)
+
+        self.panel.SetSizer(mainBox)
+
+
+
+
+
+
 
 
 
@@ -173,11 +199,11 @@ class App(wx.App):
         self.version=u"第二堂课"
         self.title=u"wxPython初级教程之"+self.version
         self.frame=Mainframe(None,-1,self.title)
-        self.frame.Center()
+        #self.frame.Center()
         self.frame.Show(True)
 
         return True
 
-if __name__=="__main__":
+if __name__ == "__main__":
     app=App()
     app.MainLoop()
