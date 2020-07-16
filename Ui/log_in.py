@@ -109,7 +109,7 @@ class AboutDialog(wx.Dialog):
                         0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
         self.sizerl.Add(wx.StaticText(self, -1, u"Version,%s %s"%(Version,ReleaseDate)),
                          0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
-        self.sizerl.Add(wx.StaticText(self, -1, u'Author:樊晓鑫'),
+        self.sizerl.Add(wx.StaticText(self, -1, u'Author:曹文胜'),
                          0, wx.ALIGN_CENTER_HORIZONTAL | wx.Top, border=10)
         self.sizerl.Add(wx.Button(self, wx.ID_OK),0, wx.ALIGN_CENTER|wx.BOTTOM, border=20)
         self.SetSizer(self.sizerl)
@@ -136,8 +136,8 @@ class App(wx.App):
         super(self.__class__,self).__init__()
 
     def OnInit(self):
-        self.version=u"第六堂课"
-        self.title=u"wxPython初级教程之"+self.version
+        self.version=u"1"
+        self.title=u"wxPython智慧购"+self.version
         self.frame=Mainframe(None,-1,self.title)
         self.frame.Show(True)
 

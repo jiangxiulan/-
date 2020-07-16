@@ -12,15 +12,9 @@ import wx.xrc
 
 
 ###########################################################################
-## Class MyFrame1
-###########################################################################
-
-class MyFrame3(wx.Frame):
-
-    def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=wx.EmptyString, pos=wx.DefaultPosition,
-                          size=wx.Size(578, 508), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
-
+class SEpage(wx.Panel):
+    def __init__(self,parent,id):
+        wx.Panel.__init__(self,parent,id)
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
 
         bSizer1 = wx.BoxSizer(wx.VERTICAL)
@@ -97,13 +91,3 @@ class MyFrame3(wx.Frame):
         self.Layout()
 
         self.Centre(wx.BOTH)
-
-    def __del__(self):
-        pass
-
-
-if __name__ == "__main__":
-    app = wx.App()
-    frame = MyFrame3(None)
-    frame.Show()
-    app.MainLoop()

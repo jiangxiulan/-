@@ -11,7 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba9ee600-9ff2-43ce-8d79-ccb00fdd1bd5" name="Default Changelist" comment="曹文胜">
-      <change beforePath="$PROJECT_DIR$/noname.py" beforeDir="false" afterPath="$PROJECT_DIR$/noname.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Zhihui-Shopping.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Zhihui-Shopping.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/Mypage.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/Mypage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/first_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/item_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/item_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/log_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/log_in.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/search_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/search_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/shopedit_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/shopedit_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ui/shopinf_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/shopinf_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +48,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
-  <component name="RunManager" selected="Python.log_in (1)">
+  <component name="RunManager" selected="Python.mian_page">
     <configuration name="log_in (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zhihui-Shopping" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,6 +93,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="mian_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Zhihui-Shopping" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mian_page.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="noname" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zhihui-Shopping" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -109,6 +139,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mian_page" />
         <item itemvalue="Python.log_in (1)" />
         <item itemvalue="Python.noname" />
         <item itemvalue="Python.log_in" />
@@ -132,6 +163,7 @@
       <workItem from="1593930442261" duration="9000" />
       <workItem from="1593932221331" duration="5536000" />
       <workItem from="1593942755009" duration="1144000" />
+      <workItem from="1594871458294" duration="554000" />
     </task>
     <task id="LOCAL-00001" summary="nemo">
       <created>1593928909920</created>
@@ -234,6 +266,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$log_in__1_.coverage" NAME="log_in (1) Coverage Results" MODIFIED="1593943899890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zhihui_Shopping$mian_page.coverage" NAME="mian_page Coverage Results" MODIFIED="1594871892679" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$noname.coverage" NAME="noname Coverage Results" MODIFIED="1593942791152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$Login.coverage" NAME="log_in Coverage Results" MODIFIED="1593942626149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
