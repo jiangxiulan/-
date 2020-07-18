@@ -12,9 +12,9 @@ import wx.xrc
 
 
 ###########################################################################
-class SEpage(wx.Panel):
+class SEDialog(wx.Dialog):
     def __init__(self,parent,id):
-        wx.Panel.__init__(self,parent,id)
+        wx.Dialog.__init__(self, parent, id, size=(500, 600))
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
 
         bSizer1 = wx.BoxSizer(wx.VERTICAL)
@@ -91,3 +91,7 @@ class SEpage(wx.Panel):
         self.Layout()
 
         self.Centre(wx.BOTH)
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()

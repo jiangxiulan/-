@@ -6,20 +6,21 @@
 ##
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
+import os
 
 import wx
 import wx.xrc
 
-
+cwd=os.getcwd()
 ###########################################################################
-class ITpage(wx.Panel):
-    def __init__(self,parent,id):
-        wx.Panel.__init__(self,parent,id)
+class ITDialog(wx.Dialog):
+    def __init__(self,parent, id,):
+        wx.Dialog.__init__(self, parent, id, size=(500,600))
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
 
         bSizer6 = wx.BoxSizer(wx.VERTICAL)
 
-        self.m_bpButton8 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton8 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\5.jpg"), wx.DefaultPosition, wx.DefaultSize,
                                            wx.BU_AUTODRAW)
         bSizer6.Add(self.m_bpButton8, 10, wx.ALL | wx.EXPAND, 5)
 
@@ -62,4 +63,9 @@ class ITpage(wx.Panel):
         self.Layout()
 
         self.Centre(wx.BOTH)
+
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()
 

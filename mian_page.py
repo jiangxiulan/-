@@ -24,6 +24,10 @@ class MainFrame(wx.Frame):
         ###########################################################################################
         ###########################################################################################
         ## 状态栏的创建
+
+
+
+
         self.setupStatusBar()
 
         ###########################################################################################
@@ -40,6 +44,9 @@ class MainFrame(wx.Frame):
         ###########################################################################################
         ## 图标的实现
         self.setupIcon()
+
+
+
 
     def InitUI(self):
         ###########################################################################################
@@ -71,7 +78,7 @@ class MainFrame(wx.Frame):
         ## 子菜单 ：退出(Quit)
         fmenu = wx.Menu()
         quit_menu = wx.MenuItem(fmenu, ID_EXIT, u'退出(&Q)')
-        #quit_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\quit.jpg"))  # 添加一个图标
+        quit_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\quit.png"))  # 添加一个图标
         fmenu.AppendItem(quit_menu)  # 将选项添加到菜单中
         # fmenu.Append(ID_EXIT, u'退出(&Q)','Terminate the program')
         ## 将子菜单添加到文件(File)中
@@ -80,7 +87,7 @@ class MainFrame(wx.Frame):
         # 子菜单 ： 关于(About)
         hmenu = wx.Menu()
         about_menu = wx.MenuItem(fmenu, ID_ABOUT, u'关于(&A)')
-        #about_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\about.jpg"))  # 添加一个图标
+        about_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\about.png"))  # 添加一个图标
         hmenu.AppendItem(about_menu)  # 将选项添加到菜单中
         ## 将子菜单添加到帮助(Help)中
         # hmenu.Append(ID_ABOUT, u'关于(&A)','More information about this program')

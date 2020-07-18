@@ -6,11 +6,11 @@
 ##
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
+import os
 
 import wx
 import wx.xrc
-
-
+cwd = os.getcwd()
 ###########################################################################
 class MYpage(wx.Panel):
     def __init__(self,parent,id):
@@ -21,9 +21,10 @@ class MYpage(wx.Panel):
 
         bSizer2 = wx.BoxSizer(wx.HORIZONTAL)
 
-        self.m_bpButton1 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton1 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\用户.png"), wx.DefaultPosition, wx.DefaultSize,
                                            wx.BU_AUTODRAW)
         bSizer2.Add(self.m_bpButton1, 1, wx.ALL | wx.EXPAND, 5)
+        self.Bind(wx.EVT_BUTTON, self.Onclick, self.m_bpButton1)
 
         self.m_staticText1 = wx.StaticText(self, wx.ID_ANY, u"昵称", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText1.Wrap(-1)
@@ -84,3 +85,68 @@ class MYpage(wx.Panel):
         self.Layout()
 
         self.Centre(wx.BOTH)
+    def Onclick(self,event):
+        dialog = LoginDialog(None,-1)
+        dialog.ShowModal()
+        dialog.Destroy()
+
+class LoginDialog(wx.Dialog):
+    def __init__(self,parent, id,):
+        wx.Dialog.__init__(self, parent, id, size=(355,166))
+        ###########################################################
+
+
+        ###########################################################
+        # 显示按钮功能
+        self.initUI()
+
+    def initUI(self):
+
+        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        bSizer2 = wx.BoxSizer(wx.VERTICAL)
+        gSizer1 = wx.GridSizer(0, 2, 0, 0)
+        ###########################################################
+        # 显示按钮功能
+        #self.panel = wx.Panel(self, -1)
+        self.m_staticText1 =wx.StaticText(self, label="Username")
+        self.m_staticText1.Wrap(-1)
+        gSizer1.Add(self.m_staticText1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
+        self._username = wx.TextCtrl(self)
+        gSizer1.Add(self._username, 0, wx.ALL | wx.EXPAND, 5)
+
+        self.m_staticText2 = wx.StaticText(self, label="Password")
+        self.m_staticText2.Wrap(-1)
+        gSizer1.Add(self.m_staticText2, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
+        self._password = wx.TextCtrl(self, pos=(85, 45), style=wx.TE_PASSWORD)
+        gSizer1.Add(self._password, 0, wx.ALL | wx.EXPAND, 5)
+        bSizer2.Add(gSizer1, 1, wx.EXPAND, 5)
+        self.submit_btn = wx.Button(self, label=u"提交", pos=(20, 80), size=(50, 30))
+        bSizer2.Add(self.submit_btn, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.submit_btn)
+        self.SetSizer(bSizer2)
+        self.Layout()
+        self.Centre(wx.BOTH)
+
+    def GetUsername(self):
+        return self._username.GetValue()
+
+    def GetPassword(self):
+        return self._password.GetValue()
+
+
+
+
+    def OnClick(self, event):
+        if event.GetEventObject() == self.submit_btn:
+            self.Destroy()
+        else:
+            print("No Button is clicked")
+
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()
+
+    # 定义一个对话框
+
+

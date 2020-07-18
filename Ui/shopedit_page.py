@@ -6,10 +6,11 @@
 ##
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
+import os
 
 import wx
 import wx.xrc
-
+cwd=os.getcwd()
 ###########################################################################
 class SPpage(wx.Panel):
     def __init__(self,parent,id):

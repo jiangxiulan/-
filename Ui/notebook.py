@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
 
 import wx
 from firstpage import FTpage
 from shopedit_page import SPpage
 from Mypage import MYpage
-from search_page import SEpage
-from shopinf_page import SIpage
-from item_page import ITpage
+cwd = os.getcwd()
 
 class FXNoteBook(wx.Notebook):
     def __init__(self, parent, id):
@@ -26,16 +25,6 @@ class FXNoteBook(wx.Notebook):
         self.myPanel = MYpage(self, -1)
         self.panels.append(self.myPanel)
         self.AddPage(self.panels[2], u"账号")
-        ############################################################
-        self.itemPanel = ITpage(self, -1)
-        self.panels.append(self.itemPanel)
-        self.AddPage(self.panels[3], u"商品")
-        ############################################################
-        self.siPanel = SIpage(self, -1)
-        self.panels.append(self.siPanel)
-        self.AddPage(self.panels[4], u"商铺")
-        ############################################################
-        self.sePanel = SEpage(self, -1)
-        self.panels.append(self.sePanel)
-        self.AddPage(self.panels[5], u"搜索")
+
     ############################################################
+

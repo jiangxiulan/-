@@ -6,22 +6,24 @@
 ##
 ## PLEASE DO "NOT" EDIT THIS FILE!
 ###########################################################################
+import os
 
 import wx
 import wx.xrc
 
-
+cwd = os.getcwd()
+#print(cwd[0:18])
 ###########################################################################
-class SIpage(wx.Panel):
+class SIDialog(wx.Dialog):
     def __init__(self,parent,id):
-        wx.Panel.__init__(self,parent,id)
+        wx.Dialog.__init__(self, parent, id, size=(500, 600))
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
 
         bSizer8 = wx.BoxSizer(wx.VERTICAL)
 
         bSizer9 = wx.BoxSizer(wx.HORIZONTAL)
 
-        self.m_bpButton9 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton9 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\购物.png"), wx.DefaultPosition, wx.DefaultSize,
                                            wx.BU_AUTODRAW)
         bSizer9.Add(self.m_bpButton9, 1, wx.ALL | wx.EXPAND, 5)
 
@@ -89,3 +91,7 @@ class SIpage(wx.Panel):
         self.Layout()
 
         self.Centre(wx.BOTH)
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()
