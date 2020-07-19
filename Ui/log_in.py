@@ -2,7 +2,7 @@ import wx
 import time
 from wx import GetApp
 ############
-from test import PyMySQL
+from datebase import PyMySQL
 
 Version="0.1"
 ReleaseDate="2020-7-5"
