@@ -20,8 +20,7 @@ class ITDialog(wx.Dialog):
 
         bSizer6 = wx.BoxSizer(wx.VERTICAL)
 
-        self.m_bpButton8 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\5.jpg"), wx.DefaultPosition, wx.DefaultSize,
-                                           wx.BU_AUTODRAW)
+        self.m_bpButton8 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\1.jpg"), wx.DefaultPosition, size=(300,200))
         bSizer6.Add(self.m_bpButton8, 10, wx.ALL | wx.EXPAND, 5)
 
         gSizer1 = wx.GridSizer(0, 2, 0, 0)

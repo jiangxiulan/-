@@ -10,6 +10,9 @@ import os
 
 import wx
 import wx.xrc
+
+from log_in import LoginDialog
+
 cwd = os.getcwd()
 ###########################################################################
 class MYpage(wx.Panel):
@@ -89,64 +92,8 @@ class MYpage(wx.Panel):
         dialog = LoginDialog(None,-1)
         dialog.ShowModal()
         dialog.Destroy()
-
-class LoginDialog(wx.Dialog):
-    def __init__(self,parent, id,):
-        wx.Dialog.__init__(self, parent, id, size=(355,166))
-        ###########################################################
+        self.m_staticText1.SetLabel(dialog.GetUsername())
 
 
-        ###########################################################
-        # 显示按钮功能
-        self.initUI()
-
-    def initUI(self):
-
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
-        bSizer2 = wx.BoxSizer(wx.VERTICAL)
-        gSizer1 = wx.GridSizer(0, 2, 0, 0)
-        ###########################################################
-        # 显示按钮功能
-        #self.panel = wx.Panel(self, -1)
-        self.m_staticText1 =wx.StaticText(self, label="Username")
-        self.m_staticText1.Wrap(-1)
-        gSizer1.Add(self.m_staticText1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
-        self._username = wx.TextCtrl(self)
-        gSizer1.Add(self._username, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.m_staticText2 = wx.StaticText(self, label="Password")
-        self.m_staticText2.Wrap(-1)
-        gSizer1.Add(self.m_staticText2, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
-        self._password = wx.TextCtrl(self, pos=(85, 45), style=wx.TE_PASSWORD)
-        gSizer1.Add(self._password, 0, wx.ALL | wx.EXPAND, 5)
-        bSizer2.Add(gSizer1, 1, wx.EXPAND, 5)
-        self.submit_btn = wx.Button(self, label=u"提交", pos=(20, 80), size=(50, 30))
-        bSizer2.Add(self.submit_btn, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
-        self.Bind(wx.EVT_BUTTON, self.OnClick, self.submit_btn)
-        self.SetSizer(bSizer2)
-        self.Layout()
-        self.Centre(wx.BOTH)
-
-    def GetUsername(self):
-        return self._username.GetValue()
-
-    def GetPassword(self):
-        return self._password.GetValue()
-
-
-
-
-    def OnClick(self, event):
-        if event.GetEventObject() == self.submit_btn:
-            self.Destroy()
-        else:
-            print("No Button is clicked")
-
-    def OnMenuExit(self, event):
-        self.Close()
-    def OnCloseWindow(self, event):
-        self.Destroy()
-
-    # 定义一个对话框
 
 

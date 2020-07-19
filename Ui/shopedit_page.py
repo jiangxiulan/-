@@ -31,35 +31,35 @@ class SPpage(wx.Panel):
 
         gSizer3 = wx.GridSizer(0, 2, 0, 0)
 
-        self.m_bpButton10 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton10 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton10, 0, wx.ALL, 5)
 
-        self.m_bpButton11 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton11 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton11, 0, wx.ALL, 5)
 
-        self.m_bpButton12 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton12 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton12, 0, wx.ALL, 5)
 
-        self.m_bpButton13 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton13 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton13, 0, wx.ALL, 5)
 
-        self.m_bpButton14 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton14 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton14, 0, wx.ALL, 5)
 
-        self.m_bpButton15 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton15 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton15, 0, wx.ALL, 5)
 
-        self.m_bpButton16 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton16 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton16, 0, wx.ALL, 5)
 
-        self.m_bpButton17 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
+        self.m_bpButton17 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         gSizer3.Add(self.m_bpButton17, 0, wx.ALL, 5)
 

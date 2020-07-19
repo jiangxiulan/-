@@ -51,27 +51,35 @@ class FTpage(wx.Panel):
         gSizer1.Add(self.m_button3, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button4 = wx.Button(self, wx.ID_ANY, u"商品2", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_1, self.m_button4)
         gSizer1.Add(self.m_button4, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button5 = wx.Button(self, wx.ID_ANY, u"店铺2", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_2, self.m_button5)
         gSizer1.Add(self.m_button5, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button6 = wx.Button(self, wx.ID_ANY, u"商品3", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_1, self.m_button6)
         gSizer1.Add(self.m_button6, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button7 = wx.Button(self, wx.ID_ANY, u"店铺3", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_2, self.m_button7)
         gSizer1.Add(self.m_button7, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button8 = wx.Button(self, wx.ID_ANY, u"商品4", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_1, self.m_button8)
         gSizer1.Add(self.m_button8, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button9 = wx.Button(self, wx.ID_ANY, u"店铺4", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_2, self.m_button9)
         gSizer1.Add(self.m_button9, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button10 = wx.Button(self, wx.ID_ANY, u"商品5", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_1, self.m_button10)
         gSizer1.Add(self.m_button10, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         self.m_button11 = wx.Button(self, wx.ID_ANY, u"店铺5", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_2, self.m_button11)
         gSizer1.Add(self.m_button11, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND, 5)
 
         bSizer1.Add(gSizer1, 10, wx.EXPAND, 5)

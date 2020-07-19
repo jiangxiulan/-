@@ -2,6 +2,8 @@ import wx
 import time
 from wx import GetApp
 ############
+from test import PyMySQL
+
 Version="0.1"
 ReleaseDate="2020-7-5"
 ############
@@ -100,7 +102,7 @@ class Mainframe(wx.Frame):
 #定义一个对话框
 class AboutDialog(wx.Dialog):
     def __init__(self,parent,id):
-        wx.Dialog.__init__(self,parent,id,'About Me',size=(200,200))
+        wx.Dialog.__init__(self,parent,id,'About Me',size=(200,300))
 
         self.sizerl=wx.BoxSizer(wx.VERTICAL)
         self.sizerl.Add(wx.StaticText(self,-1,u'wxPython初级教程'),
@@ -116,33 +118,104 @@ class AboutDialog(wx.Dialog):
 
 
 class LoginDialog(wx.Dialog):
-    def __init__(self,parent, id):
-        super(LoginDialog, self).__init__(parent, id, u'显示', size=(200, 200))
-        self.app=wx.GetApp()
-        self.panel=self.app.frame
-        self._username_dlg=wx.StaticText(self, label=u"用户名:"+self.GetUsername(), pos=(20, 20))
-        self._password_dlg=wx.StaticText(self, label=u"密 码:"+self.GetPassword(), pos=(20, 50))
-        wx.Button(self, wx.ID_OK,pos=(20, 80))
+    def __init__(self,parent, id,):
+        wx.Dialog.__init__(self, parent, id, size=( 411,160))
+        ###########################################################
+
+
+        ###########################################################
+        # 显示按钮功能
+        self.initUI()
+
+    def initUI(self):
+
+        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        bSizer2 = wx.BoxSizer(wx.VERTICAL)
+        gSizer1 = wx.GridSizer(0, 2, 0, 0)
+        ###########################################################
+        # 显示按钮功能
+        #self.panel = wx.Panel(self, -1)
+        self.m_staticText1 =wx.StaticText(self, label="Username")
+        self.m_staticText1.Wrap(-1)
+        gSizer1.Add(self.m_staticText1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
+        self._username = wx.TextCtrl(self)
+        gSizer1.Add(self._username, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_staticText2 = wx.StaticText(self, label="Password")
+        self.m_staticText2.Wrap(-1)
+        gSizer1.Add(self.m_staticText2, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
+        self._password = wx.TextCtrl(self, pos=(85, 45), style=wx.TE_PASSWORD)
+        gSizer1.Add(self._password, 0, wx.ALL | wx.EXPAND, 5)
+
+
+
+
+        m_choice1Choices = ["商家","一般用户"]
+        self.m_choice1 = wx.Choice(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice1Choices, 0)
+        self.m_choice1.SetSelection(0)
+        gSizer1.Add(self.m_choice1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
+
+        self.submit_btn = wx.Button(self, label=u"提交")
+       # bSizer2.Add(self.submit_btn, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.submit_btn)
+        gSizer1.Add(self.submit_btn, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
+        bSizer2.Add(gSizer1, 1, wx.EXPAND, 5)
+
+        self.m_staticText3 = wx.StaticText(self, wx.ID_ANY,wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText3.Wrap(-1)
+        bSizer2.Add(self.m_staticText3, 0, wx.ALL , 5)
+
+
+        self.SetSizer(bSizer2)
+        self.Layout()
+        self.Centre(wx.BOTH)
 
     def GetUsername(self):
-        return self.panel.GetUsername()
+        return self._username.GetValue()
 
     def GetPassword(self):
-        return self.panel.GetPassword()
+        return self._password.GetValue()
 
 
-class App(wx.App):
-    def __init__(self):
-        super(self.__class__,self).__init__()
 
-    def OnInit(self):
-        self.version=u"1"
-        self.title=u"wxPython智慧购"+self.version
-        self.frame=Mainframe(None,-1,self.title)
-        self.frame.Show(True)
+    #
+    # def OnClick(self, event):
+    #     if event.GetEventObject() == self.submit_btn:
+    #         self.Destroy()
+    #     else:
+    #         print("No Button is clicked")
 
-        return True
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()
 
-if __name__=="__main__":
-    app=App()
-    app.MainLoop()
+    # 定义一个对话框
+
+    def OnClick(self,event):
+        create_table = 'create table stu(id int not null primary key auto_increment,name varchar(255) not null,age int, sex varchar(255))default charset=utf8'
+        select = 'select * from user_inf where 用户账号=\''+self.GetUsername()+'\''
+        update = 'update stu set name="明明" where id=2'
+        delete = 'delete from stu where id=9'
+        insert = 'insert into stu(name,age,sex) values("%s","%d","%s")' % ('小明', 2, "男")
+        print(select)
+
+        order=select
+        my = PyMySQL(order)
+        #my.create_table_func()
+        #my.insert_date()
+        #my.update_data()
+        #my.delete_data()
+        str="12"
+        str=my.select_data(str)
+        print(str)
+        if str==self.GetPassword():
+            self.m_staticText3.SetLabel(u"欢迎"+self.GetUsername())
+            #time.sleep(3)
+            self.Destroy()
+        else:
+            self.m_staticText3.SetLabel(u"输入错误")
+
+
+
+
+
