@@ -53,6 +53,18 @@ class PyMySQL(object):
             print(type(i[1]))
             str=i[1]
         return  str
+
+    def select_data2(self,list):
+        self.cursor.execute(self.order)
+
+        all_data = self.cursor.fetchall()
+        for i in all_data:
+            print('查询结果为：{}'.format(i))
+            print(type(i[1]))
+            list.append(i)
+            print(list)
+
+        return  list
 #
 # if __name__ == '__main__':
 #     create_table = 'create table stu(id int not null primary key auto_increment,name varchar(255) not null,age int, sex varchar(255))default charset=utf8'

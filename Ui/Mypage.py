@@ -26,6 +26,7 @@ class MYpage(wx.Panel):
 
         self.m_bpButton1 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\用户.png"), wx.DefaultPosition, wx.DefaultSize,
                                            wx.BU_AUTODRAW)
+        self.m_bpButton1.SetBackgroundColour("white")
         bSizer2.Add(self.m_bpButton1, 1, wx.ALL | wx.EXPAND, 5)
         self.Bind(wx.EVT_BUTTON, self.Onclick, self.m_bpButton1)
 
@@ -70,12 +71,18 @@ class MYpage(wx.Panel):
         bSizer5 = wx.BoxSizer(wx.VERTICAL)
 
         self.m_button1 = wx.Button(self, wx.ID_ANY, u"购买地址", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button1.SetBackgroundColour("#FF6600")
+        self.m_button1.SetForegroundColour("white")
         bSizer5.Add(self.m_button1, 0, wx.ALL | wx.EXPAND, 5)
 
         self.m_button2 = wx.Button(self, wx.ID_ANY, u"购买评估", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button2.SetBackgroundColour("#FF6600")
+        self.m_button2.SetForegroundColour("white")
         bSizer5.Add(self.m_button2, 0, wx.ALL | wx.EXPAND, 5)
 
         self.m_button3 = wx.Button(self, wx.ID_ANY, u"购买统计", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button3.SetBackgroundColour("#FF6600")
+        self.m_button3.SetForegroundColour("white")
         bSizer5.Add(self.m_button3, 0, wx.ALL | wx.EXPAND, 5)
 
         self.m_staticText10 = wx.StaticText(self, wx.ID_ANY, u"...", wx.DefaultPosition, wx.DefaultSize, 0)
@@ -91,8 +98,11 @@ class MYpage(wx.Panel):
     def Onclick(self,event):
         dialog = LoginDialog(None,-1)
         dialog.ShowModal()
+        print(self.m_staticText3)
+        if(self.m_staticText3=="欢迎"):
+            self.m_staticText1.SetLabel(dialog.GetUsername())
         dialog.Destroy()
-        self.m_staticText1.SetLabel(dialog.GetUsername())
+
 
 
 

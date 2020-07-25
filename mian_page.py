@@ -158,8 +158,8 @@ class App(wx.App):
     # wx.App.__init__(self)
 
     def OnInit(self):
-        self.version = u"第11课"
-        self.title = u"wxPython初级教程之" + self.version
+        self.version = u"智慧购app"
+        self.title = u"wxPython之" + self.version
         self.frame = MainFrame(None, -1, self.title)
         self.SetTopWindow(self.frame)
         self.frame.Center()

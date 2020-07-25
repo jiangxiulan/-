@@ -33,35 +33,43 @@ class SPpage(wx.Panel):
 
         self.m_bpButton10 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton10, 0, wx.ALL, 5)
+        self.m_bpButton10.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton10, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton11 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton11, 0, wx.ALL, 5)
+        self.m_bpButton11.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton11, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton12 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton12, 0, wx.ALL, 5)
+        self.m_bpButton12.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton12, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton13 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton13, 0, wx.ALL, 5)
+        self.m_bpButton13.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton13, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton14 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton14, 0, wx.ALL, 5)
+        self.m_bpButton14.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton14, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton15 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton15, 0, wx.ALL, 5)
+        self.m_bpButton15.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton15, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton16 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton16, 0, wx.ALL, 5)
+        self.m_bpButton16.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton16, 0, wx.ALL|  wx.EXPAND, 5)
 
         self.m_bpButton17 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd+"\\images\\商品.png"), wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
-        gSizer3.Add(self.m_bpButton17, 0, wx.ALL, 5)
+        self.m_bpButton17.SetBackgroundColour("white")
+        gSizer3.Add(self.m_bpButton17, 0, wx.ALL|  wx.EXPAND, 5)
 
         bSizer14.Add(gSizer3, 4, wx.EXPAND, 5)
 
@@ -72,9 +80,13 @@ class SPpage(wx.Panel):
         bSizer17.Add(self.m_staticText25, 0, wx.ALL | wx.EXPAND, 5)
 
         self.m_button11 = wx.Button(self, wx.ID_ANY, u"删除", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button11.SetBackgroundColour("#FF6600")
+        self.m_button11.SetForegroundColour("white")
         bSizer17.Add(self.m_button11, 0, wx.ALL, 5)
 
         self.m_button12 = wx.Button(self, wx.ID_ANY, u"修改数量", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button12.SetBackgroundColour("#FF6600")
+        self.m_button12.SetForegroundColour("white")
         bSizer17.Add(self.m_button12, 0, wx.ALL, 5)
 
         bSizer14.Add(bSizer17, 4, wx.EXPAND, 5)
@@ -93,6 +105,7 @@ class SPpage(wx.Panel):
 
         self.m_bpButton18 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
+        self.m_bpButton18.SetBackgroundColour("white")
         gSizer4.Add(self.m_bpButton18, 0, wx.ALL, 5)
 
         self.m_staticText35 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
