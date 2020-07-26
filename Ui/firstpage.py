@@ -135,59 +135,61 @@ class FTpage(wx.Panel):
         my2 = PyMySQL(select2)
         self.list2 = my2.select_data2(self.list2)
         print(self.list2)
+    def GetValue0(self):
+        return self.m_textCtrl1.GetValue()
 
     def OnClick(self, event):
         if event.GetEventObject() == self.m_button1:
-            item = SEDialog(None, -1)
+            item = SEDialog(None,-1, "搜索",self.GetValue0())
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button2:
-            item = ITDialog(None, -1,self.list[0][1])
+            item = ITDialog(None, -1,"商品信息",self.list[0][1])
             #item.getValue(self.list[0][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button3:
-            item=SIDialog(None,-1,self.list2[0][1])
+            item=SIDialog(None,-1,"店铺信息",self.list2[0][1])
             #item.getValue(self.list2[0][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button4:
-            item = ITDialog(None, -1,self.list[1][1])
+            item = ITDialog(None, -1,"商品信息",self.list[1][1])
             #item.getValue(self.list[1][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button5:
-            item = SIDialog(None, -1,self.list2[1][1])
+            item = SIDialog(None, -1,"店铺信息",self.list2[1][1])
             #item.getValue(self.list2[1][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button6:
-            item = ITDialog(None, -1,self.list[2][1])
+            item = ITDialog(None, -1,"商品信息",self.list[2][1])
             #item.getValue(self.list[2][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button7:
-            item = SIDialog(None, -1,self.list2[2][1])
+            item = SIDialog(None, -1,"店铺信息",self.list2[2][1])
             #item.getValue(self.list2[2][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button8:
-            item = ITDialog(None, -1,self.list[3][1])
+            item = ITDialog(None, -1,"商品信息",self.list[3][1])
             #item.getValue(self.list[3][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button9:
-            item = SIDialog(None, -1,self.list2[3][1])
+            item = SIDialog(None, -1,"店铺信息",self.list2[3][1])
             #item.getValue(self.list2[3][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button10:
-            item = ITDialog(None, -1,self.list[4][1])
+            item = ITDialog(None, -1,"商品信息",self.list[4][1])
            # item.getValue(self.list[4][1])
             item.ShowModal()
             item.Destroy()
         elif event.GetEventObject() == self.m_button11:
-            item = SIDialog(None, -1,self.list2[4][1])
+            item = SIDialog(None, -1,"店铺信息",self.list2[4][1])
             #item.getValue(self.list2[4][1])
             item.ShowModal()
             item.Destroy()

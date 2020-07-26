@@ -12,6 +12,7 @@ import wx.xrc
 
 from datebase import PyMySQL
 from log_in import LoginDialog
+from shopedit_page import SPpage
 from user_list import  userone
 
 cwd = os.getcwd()
@@ -78,9 +79,10 @@ class MYpage(wx.Panel):
         self.m_button1.SetForegroundColour("white")
         bSizer5.Add(self.m_button1, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_button2 = wx.Button(self, wx.ID_ANY, u"购买评估", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button2 = wx.Button(self, wx.ID_ANY, u"我的店铺", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button2.SetBackgroundColour("#FF6600")
         self.m_button2.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.Onclick_1, self.m_button2)
         bSizer5.Add(self.m_button2, 0, wx.ALL | wx.EXPAND, 5)
 
         self.m_button3 = wx.Button(self, wx.ID_ANY, u"购买统计", wx.DefaultPosition, wx.DefaultSize, 0)
@@ -99,25 +101,29 @@ class MYpage(wx.Panel):
 
         self.Centre(wx.BOTH)
     def Onclick(self,event):
-        dialog = LoginDialog(None,-1)
+        dialog = LoginDialog(None,-1,"登录")
         dialog.ShowModal()
-        print(self.m_staticText3)
         if userone.username!="":
             self.m_staticText1.SetLabel(userone.username)
             self.connect(userone.username)
         dialog.Destroy()
 
     def connect(self,value):
-        select = 'SELECT `商品编号`,`收货地址` FROM purchase_inf,user_inf ' \
+        select = 'SELECT `商品编号`,`收货地址` ,count(*) FROM purchase_inf,user_inf ' \
                  'WHERE purchase_inf.`用户账号`=user_inf.`用户账号` ' \
                  ' AND purchase_inf.`用户账号` =\''+value+'\''
         my = PyMySQL(select)
         self.list=[]
         self.list = my.select_data2(self.list)
-        print(self.list)
+        #print(self.list)
         self.m_staticText3.SetLabel('购买商品编号：'+self.list[0][0])
         self.m_button1.SetLabel('收货地址：'+self.list[0][1])
+        self.m_button3.SetLabel('购买统计：'+str(self.list[0][2]))
 
+    def Onclick_1(self, event):
+        dialog = SPpage(None, -1,"我的店铺")
+        dialog.ShowModal()
+        dialog.Destroy()
 
 
 

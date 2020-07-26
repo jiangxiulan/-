@@ -58,10 +58,12 @@ class PyMySQL(object):
         self.cursor.execute(self.order)
 
         all_data = self.cursor.fetchall()
+        j=0
         for i in all_data:
             print('查询结果为：{}'.format(i))
-            print(type(i[1]))
-            list.append(i)
+            print(type(i[0]))
+            list.insert(j,i)
+            j=j+1
             print(list)
 
         return  list

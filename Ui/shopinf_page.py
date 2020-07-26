@@ -17,8 +17,8 @@ cwd = os.getcwd()
 #print(cwd[0:18])
 ###########################################################################
 class SIDialog(wx.Dialog):
-    def __init__(self,parent,id,value):
-        wx.Dialog.__init__(self, parent, id, size=(500, 600))
+    def __init__(self,parent,title,id,value):
+        wx.Dialog.__init__(self, parent,title, id, size=(500, 600))
         self.value=value
 
         self.list = []

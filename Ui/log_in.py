@@ -1,6 +1,4 @@
 import wx
-import time
-from wx import GetApp
 ############
 from datebase import PyMySQL
 from user_list import userone
@@ -14,8 +12,8 @@ ID_ABOUT=201
 ID_MR=100
 
 class LoginDialog(wx.Dialog):
-    def __init__(self,parent, id,):
-        wx.Dialog.__init__(self, parent, id, size=( 411,160))
+    def __init__(self,parent,id, title):
+        wx.Dialog.__init__(self, parent, id,title, size=( 411,160))
         ###########################################################
 
 
@@ -31,12 +29,12 @@ class LoginDialog(wx.Dialog):
         ###########################################################
         # 显示按钮功能
         #self.panel = wx.Panel(self, -1)
-        self.m_staticText1 =wx.StaticText(self, label="Username")
+        self.m_staticText1 =wx.StaticText(self, label="用户名")
         self.m_staticText1.Wrap(-1)
         gSizer1.Add(self.m_staticText1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
         self._username = wx.TextCtrl(self)
         gSizer1.Add(self._username, 0, wx.ALL | wx.EXPAND, 5)
-        self.m_staticText2 = wx.StaticText(self, label="Password")
+        self.m_staticText2 = wx.StaticText(self, label="密码")
         self.m_staticText2.Wrap(-1)
         gSizer1.Add(self.m_staticText2, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL | wx.ALIGN_CENTER_VERTICAL, 5)
         self._password = wx.TextCtrl(self, pos=(85, 45), style=wx.TE_PASSWORD)
@@ -93,7 +91,7 @@ class LoginDialog(wx.Dialog):
         update = 'update stu set name="明明" where id=2'
         delete = 'delete from stu where id=9'
         insert = 'insert into stu(name,age,sex) values("%s","%d","%s")' % ('小明', 2, "男")
-        print(select)
+        #print(select)
 
         order=select
         my = PyMySQL(order)
@@ -103,16 +101,14 @@ class LoginDialog(wx.Dialog):
         #my.delete_data()
         str="12"
         str=my.select_data(str)
-        print(str)
-        print(self.GetPassword())
+        #print(str)
+        #print(self.GetPassword())
         if str==self.GetPassword():
             self.m_staticText3.SetLabel(u"欢迎"+self.GetUsername())
             userone.username=self.GetUsername()
             self.Destroy()
         else:
             self.m_staticText3.SetLabel(u"输入错误")
-
-
 
 
 
