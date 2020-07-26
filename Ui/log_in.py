@@ -3,6 +3,7 @@ import time
 from wx import GetApp
 ############
 from datebase import PyMySQL
+from user_list import userone
 
 Version="0.1"
 ReleaseDate="2020-7-5"
@@ -103,9 +104,10 @@ class LoginDialog(wx.Dialog):
         str="12"
         str=my.select_data(str)
         print(str)
+        print(self.GetPassword())
         if str==self.GetPassword():
             self.m_staticText3.SetLabel(u"欢迎"+self.GetUsername())
-            #time.sleep(3)
+            userone.username=self.GetUsername()
             self.Destroy()
         else:
             self.m_staticText3.SetLabel(u"输入错误")

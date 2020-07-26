@@ -25,6 +25,5 @@ class FXNoteBook(wx.Notebook):
         self.myPanel = MYpage(self, -1)
         self.panels.append(self.myPanel)
         self.AddPage(self.panels[2], u"账号")
-
     ############################################################
 

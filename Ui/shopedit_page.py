@@ -139,3 +139,6 @@ class SPpage(wx.Panel):
         self.Layout()
 
         self.Centre(wx.BOTH)
+
+
+        print("dhskajhdfidhuwohduow")
