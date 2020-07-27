@@ -23,7 +23,7 @@ class SIDialog(wx.Dialog):
 
         self.list = []
         self.initdb()
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
         bSizer8 = wx.BoxSizer(wx.VERTICAL)
 

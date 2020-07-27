@@ -10,18 +10,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba9ee600-9ff2-43ce-8d79-ccb00fdd1bd5" name="Default Changelist" comment="7/25">
+    <list default="true" id="ba9ee600-9ff2-43ce-8d79-ccb00fdd1bd5" name="Default Changelist" comment="7/26">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/Mypage.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/Mypage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/firstpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/firstpage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/item_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/item_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/log_in.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/log_in.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ui/notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/notebook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/search_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/search_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/shopedit_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/shopedit_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ui/shopinf_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ui/shopinf_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datebase.py" beforeDir="false" afterPath="$PROJECT_DIR$/datebase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mian_page.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +54,28 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main_page">
+    <configuration name="Mypage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Zhihui-Shopping" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Ui" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Ui/Mypage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="info_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zhihui-Shopping" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -122,28 +142,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mian_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Zhihui-Shopping" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mian_page.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="search_page" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zhihui-Shopping" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,10 +167,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_page" />
+        <item itemvalue="Python.Mypage" />
         <item itemvalue="Python.item_page" />
         <item itemvalue="Python.info_page" />
         <item itemvalue="Python.search_page" />
-        <item itemvalue="Python.mian_page" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +207,10 @@
       <workItem from="1595683485308" duration="100000" />
       <workItem from="1595728987545" duration="6580000" />
       <workItem from="1595751257929" duration="1261000" />
-      <workItem from="1595754403493" duration="17906000" />
+      <workItem from="1595754403493" duration="18154000" />
+      <workItem from="1595815235869" duration="6395000" />
+      <workItem from="1595840024722" duration="1264000" />
+      <workItem from="1595853142075" duration="8202000" />
     </task>
     <task id="LOCAL-00001" summary="nemo">
       <created>1593928909920</created>
@@ -274,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595752452828</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="7/26">
+      <created>1595773957683</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1595773957683</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,46 +327,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="619" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1593929198277" />
-    <state width="1493" height="225" key="GridCell.Tab.0.bottom" timestamp="1595773785820">
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom" timestamp="1595862351985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595773785820" />
-    <state width="1493" height="225" key="GridCell.Tab.0.center" timestamp="1595773785820">
+    <state width="1493" height="224" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595862351985" />
+    <state width="1493" height="224" key="GridCell.Tab.0.center" timestamp="1595862351985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595773785820" />
-    <state width="1493" height="225" key="GridCell.Tab.0.left" timestamp="1595773785820">
+    <state width="1493" height="224" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595862351985" />
+    <state width="1493" height="224" key="GridCell.Tab.0.left" timestamp="1595862351985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595773785820" />
-    <state width="1493" height="225" key="GridCell.Tab.0.right" timestamp="1595773785820">
+    <state width="1493" height="224" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595862351985" />
+    <state width="1493" height="224" key="GridCell.Tab.0.right" timestamp="1595862351985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595773785820" />
-    <state width="1493" height="259" key="GridCell.Tab.1.bottom" timestamp="1595771597596">
+    <state width="1493" height="224" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595862351985" />
+    <state width="1493" height="259" key="GridCell.Tab.1.bottom" timestamp="1595858871182">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595771597596" />
-    <state width="1493" height="259" key="GridCell.Tab.1.center" timestamp="1595771597596">
+    <state width="1493" height="259" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595858871182" />
+    <state width="1493" height="259" key="GridCell.Tab.1.center" timestamp="1595858871182">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595771597596" />
-    <state width="1493" height="259" key="GridCell.Tab.1.left" timestamp="1595771597596">
+    <state width="1493" height="259" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595858871182" />
+    <state width="1493" height="259" key="GridCell.Tab.1.left" timestamp="1595858871182">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595771597596" />
-    <state width="1493" height="259" key="GridCell.Tab.1.right" timestamp="1595771597596">
+    <state width="1493" height="259" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595858871182" />
+    <state width="1493" height="259" key="GridCell.Tab.1.right" timestamp="1595858871182">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595771597596" />
+    <state width="1493" height="259" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595858871182" />
     <state x="270" y="57" key="SettingsEditor" timestamp="1594893451141">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594893451141" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595752459904">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1595773965763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595752459904" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1595773965763" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595760354513">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -367,15 +375,15 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$firstpage.coverage" NAME="firstpage Coverage Results" MODIFIED="1595656321373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1595729308241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Zhihui_Shopping$item_page.coverage" NAME="item_page Coverage Results" MODIFIED="1595771754659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
+    <SUITE FILE_PATH="coverage/Zhihui_Shopping$item_page.coverage" NAME="item_page Coverage Results" MODIFIED="1595817964176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$err.coverage" NAME="err Coverage Results" MODIFIED="1595143544021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python/Python38/Lib/site-packages/pymysql" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$datebase.coverage" NAME="datebase Coverage Results" MODIFIED="1595761867312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$shopinf_page.coverage" NAME="shopinf_page Coverage Results" MODIFIED="1595582581298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$notebook.coverage" NAME="notebook Coverage Results" MODIFIED="1595048265813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
-    <SUITE FILE_PATH="coverage/Zhihui_Shopping$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1595773873517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Zhihui_Shopping$main_page.coverage" NAME="main_page Coverage Results" MODIFIED="1595862536431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$shopedit_page.coverage" NAME="shopedit_page Coverage Results" MODIFIED="1595757170094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$noname.coverage" NAME="noname Coverage Results" MODIFIED="1593942791152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Zhihui_Shopping$Mypage.coverage" NAME="Mypage Coverage Results" MODIFIED="1595757020394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
+    <SUITE FILE_PATH="coverage/Zhihui_Shopping$Mypage.coverage" NAME="Mypage Coverage Results" MODIFIED="1595862401744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$log_in.coverage" NAME="log_in Coverage Results" MODIFIED="1595761315414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$Login.coverage" NAME="log_in Coverage Results" MODIFIED="1593942626149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Zhihui_Shopping$search_page.coverage" NAME="search_page Coverage Results" MODIFIED="1595764741613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Ui" />

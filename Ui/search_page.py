@@ -21,7 +21,7 @@ class SEDialog(wx.Dialog):
         self.value0=value0
         self.list = [("","","","","",""),("","","","","",""),("","","","","",""),("","","","","",""),("","","","","","")]
         self.initdb()
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
         bSizer1 = wx.BoxSizer(wx.VERTICAL)
 

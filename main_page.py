@@ -72,7 +72,7 @@ class MainFrame(wx.Frame):
         fmenu = wx.Menu()
         quit_menu = wx.MenuItem(fmenu, ID_EXIT, u'退出(&Q)')
         quit_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\quit.png"))  # 添加一个图标
-        fmenu.AppendItem(quit_menu)  # 将选项添加到菜单中
+        fmenu.Append(quit_menu)  # 将选项添加到菜单中
         # fmenu.Append(ID_EXIT, u'退出(&Q)','Terminate the program')
         ## 将子菜单添加到文件(File)中
         menubar.Append(fmenu, u'文件(&F)')
@@ -81,7 +81,7 @@ class MainFrame(wx.Frame):
         hmenu = wx.Menu()
         about_menu = wx.MenuItem(fmenu, ID_ABOUT, u'关于(&A)')
         about_menu.SetBitmap(wx.Bitmap(cwd + "\\images\\about.png"))  # 添加一个图标
-        hmenu.AppendItem(about_menu)  # 将选项添加到菜单中
+        hmenu.Append(about_menu)  # 将选项添加到菜单中
         ## 将子菜单添加到帮助(Help)中
         # hmenu.Append(ID_ABOUT, u'关于(&A)','More information about this program')
         menubar.Append(hmenu, u'帮助(&H)')

@@ -12,9 +12,13 @@ import wx
 import wx.xrc
 
 from datebase import PyMySQL
+from user_list import userone
 
 cwd=os.getcwd()
 ###########################################################################
+
+
+
 class ITDialog(wx.Dialog):
     def __init__(self,parent, id,title,value):
 
@@ -24,7 +28,7 @@ class ITDialog(wx.Dialog):
         self.list=[]
         self.initdb()
 
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
         bSizer6 = wx.BoxSizer(wx.VERTICAL)
 
@@ -62,13 +66,20 @@ class ITDialog(wx.Dialog):
         self.m_staticText14.Wrap(-1)
         bSizer7.Add(self.m_staticText14, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText15 = wx.StaticText(self, wx.ID_ANY, u"评价2", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText15.Wrap(-1)
-        bSizer7.Add(self.m_staticText15, 0, wx.ALL | wx.EXPAND, 5)
+        bSizer8 = wx.BoxSizer(wx.HORIZONTAL)
+        self.m_staticText1 = wx.StaticText(self, wx.ID_ANY, u"请选择数量", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText1.Wrap(-1)
+        bSizer8.Add(self.m_staticText1, 1, wx.ALL, 5)
+        self.m_spinCtrl1 = wx.SpinCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize,
+                                       wx.SP_ARROW_KEYS, 0, int(self.list[0][5]), 0)
+        bSizer8.Add(self.m_spinCtrl1, 1, wx.ALL, 5)
+
+        bSizer7.Add(bSizer8, 0, wx.ALL | wx.EXPAND, 5)
 
         bSizer6.Add(bSizer7, 1, wx.EXPAND, 5)
 
         self.m_button4 = wx.Button(self, wx.ID_ANY, u"购买", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button4)
         bSizer6.Add(self.m_button4, 0, wx.ALL | wx.EXPAND, 5)
 
         self.SetSizer(bSizer6)
@@ -85,7 +96,7 @@ class ITDialog(wx.Dialog):
         print(self.value)
 
     def initdb(self):
-        select = 'select `所属店铺`,item_inf.`价格`,item_inf.`评价`,shop_info.`店铺名称`,shop_info.`地址`,item_inf.`数量`' \
+        select = 'select `所属店铺`,item_inf.`价格`,item_inf.`评价`,shop_info.`店铺名称`,shop_info.`地址`,item_inf.`数量`,item_inf.`销量`' \
                  'FROM shop_info,item_inf ' \
                  'where shop_info.`店铺编号`=item_inf.`所属店铺` AND ' \
                  'item_inf.`商品编号`=\''+self.value+'\''
@@ -94,3 +105,47 @@ class ITDialog(wx.Dialog):
         #print(self.list)
         #print("41545")
         #print(type(list[0]))
+
+    def OnClick(self,event):
+        if userone.username=="":
+            dlg = wx.MessageDialog(None, u"未登录", u"提示", wx.OK | wx.ICON_QUESTION)
+            if dlg.ShowModal() == wx.ID_OK:
+                self.Close(True)
+            dlg.Destroy()
+        else:
+            self.initdb1()
+            print(self.m_spinCtrl1.GetValue())
+            dlg = MessageDialog(None, -1, self.m_spinCtrl1.GetValue(), self.list[0][1])
+            dlg.ShowModal()
+            dlg.Destroy()
+            self.Close(True)
+
+    def initdb1(self):
+        insert = 'insert into purchase_inf ' \
+                 'values(SYSDATE(),\''+userone.username+'\',\''+self.value+'\',\''+str(self.m_spinCtrl1.GetValue())+'\')'
+        my = PyMySQL(insert)
+        my.insert_date()
+        self.value1=int(self.list[0][5])-self.m_spinCtrl1.GetValue()
+        self.value2=int(self.list[0][6])+self.m_spinCtrl1.GetValue()
+        update = 'UPDATE item_inf SET `数量`=\''+str(self.value1)+'\', `销量`=\''+str(self.value2)+'\' WHERE `商品编号`=\''\
+                 +self.value+'\''
+        print(update)
+        my1 = PyMySQL(update)
+        my1.update_data()
+
+
+class MessageDialog(wx.Dialog):
+    def __init__(self, parent, id,value,value1):
+        wx.Dialog.__init__(self, parent, id, 'About Me', size=(300, 200))
+        self.sizer1 = wx.BoxSizer(wx.VERTICAL)
+        self.sizer1.Add(wx.StaticText(self, -1, u"购买成功！"),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=20)
+        self.sizer1.Add(wx.StaticText(self, -1, u"共购买"+str(value)),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=10)
+        self.value=value
+        self.value1=float(value1)
+        self.value2=self.value1*self.value
+        self.sizer1.Add(wx.StaticText(self, -1, "共消费"+str(self.value2)+"元"),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=10)
+        self.sizer1.Add(wx.Button(self, wx.ID_OK), 0, wx.ALIGN_CENTER | wx.BOTTOM, border=20)
+        self.SetSizer(self.sizer1)

@@ -23,7 +23,7 @@ class LoginDialog(wx.Dialog):
 
     def initUI(self):
 
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
         bSizer2 = wx.BoxSizer(wx.VERTICAL)
         gSizer1 = wx.GridSizer(0, 2, 0, 0)
         ###########################################################

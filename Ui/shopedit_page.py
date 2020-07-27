@@ -24,11 +24,11 @@ class SPpage(wx.Dialog):
         if userone.username!="":
             self.username=userone.username
 
-        self.list = [("",), ("",), ("",), ("",),("",),("",),("",),("",)]
+        self.list = [("",""), ("",""), ("",""), ("",""),("",""),("",""),("",""),("","")]
         self.initdb()
 
 
-        self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
         bSizer12 = wx.BoxSizer(wx.VERTICAL)
         bSizer13 = wx.BoxSizer(wx.VERTICAL)
 
@@ -98,14 +98,23 @@ class SPpage(wx.Dialog):
         self.m_staticText25.Wrap(-1)
         bSizer17.Add(self.m_staticText25, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_button11 = wx.Button(self, wx.ID_ANY, u"删除", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button11 = wx.Button(self, wx.ID_ANY, u"删除商品"
+                                                     u"", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button11.SetBackgroundColour("#FF6600")
         self.m_button11.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.Onclick, self.m_button11)
         bSizer17.Add(self.m_button11, 0, wx.ALL, 5)
 
-        self.m_button12 = wx.Button(self, wx.ID_ANY, u"修改数量", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button13 = wx.Button(self, wx.ID_ANY, u"添加商品", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button13.SetBackgroundColour("#FF6600")
+        self.m_button13.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.Onclick, self.m_button13)
+        bSizer17.Add(self.m_button13, 0, wx.ALL, 5)
+
+        self.m_button12 = wx.Button(self, wx.ID_ANY, u"修改信息", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button12.SetBackgroundColour("#FF6600")
         self.m_button12.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.Onclick, self.m_button12)
         bSizer17.Add(self.m_button12, 0, wx.ALL, 5)
 
         bSizer14.Add(bSizer17, 4, wx.EXPAND, 5)
@@ -133,12 +142,19 @@ class SPpage(wx.Dialog):
         self.m_staticText35.Wrap(-1)
         gSizer4.Add(self.m_staticText35, 0, wx.ALL, 5)
 
-        self.m_staticText29 = wx.StaticText(self, wx.ID_ANY, u"商品名", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText29 = wx.StaticText(self, wx.ID_ANY, u"商品编号", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText29.Wrap(-1)
         gSizer4.Add(self.m_staticText29, 0, wx.ALL, 5)
 
         self.m_textCtrl3 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer4.Add(self.m_textCtrl3, 0, wx.ALL, 5)
+
+        self.m_staticText32 = wx.StaticText(self, wx.ID_ANY, u"商品名称", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText32.Wrap(-1)
+        gSizer4.Add(self.m_staticText32, 0, wx.ALL, 5)
+
+        self.m_textCtrl6 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        gSizer4.Add(self.m_textCtrl6, 0, wx.ALL, 5)
 
         self.m_staticText30 = wx.StaticText(self, wx.ID_ANY, u"商品数量", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText30.Wrap(-1)
@@ -198,16 +214,39 @@ class SPpage(wx.Dialog):
             dialog = InfoPage(None, -1, "商品信息",self.list[8][0])
             dialog.ShowModal()
             dialog.Destroy()
+        elif event.GetEventObject() == self.m_button11:
+            self.initdb2()
+        elif event.GetEventObject() == self.m_button12:
+            self.initdb3()
+        elif event.GetEventObject() == self.m_button13:
+            self.initdb4()
         else:
             print("No Button is clicked")
 
     def initdb(self):
-        select = 'SELECT item_inf.`商品编号` FROM shop_info,item_inf ' \
+        select = 'SELECT item_inf.`商品编号`,shop_info.`店铺编号` FROM shop_info,item_inf ' \
                  'WHERE shop_info.`店铺编号`=item_inf.`所属店铺` ' \
                  'AND shop_info.`所属用户`=\''+self.username+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
         print(self.list)
+
+    def initdb2(self):
+        delete = 'DELETE FROM item_inf WHERE 商品编号 =\''+self.m_textCtrl3.GetValue()+'\''
+        my = PyMySQL(delete)
+        my.delete_data()
+
+    def initdb3(self):
+        update = 'UPDATE item_inf set `数量` =\''+self.m_textCtrl4.GetValue()+'\',`价格`=\''\
+                 +self.m_textCtrl5.GetValue()+'\' WHERE `商品编号`=\''+self.m_textCtrl3.GetValue()+'\''
+        my = PyMySQL(update)
+        my.update_data()
+    def initdb4(self):
+        insert = 'INSERT INTO item_inf VALUES (\''+self.m_textCtrl3.GetValue()+'\',\''+self.m_textCtrl6.GetValue()\
+                 +'\',\''+self.list[0][1]+'\',\''+self.m_textCtrl5.GetValue()+'\',\'0\',\''+self.m_textCtrl4.GetValue()\
+                    +'\',\'0\')'
+        my = PyMySQL(insert)
+        my.insert_date()
 
 
 
