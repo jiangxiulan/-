@@ -12,6 +12,7 @@ import wx
 import wx.xrc
 
 from datebase import PyMySQL
+from item_page import ITDialog
 
 cwd=os.getcwd()
 ###########################################################################
@@ -20,6 +21,7 @@ class SEDialog(wx.Dialog):
         wx.Dialog.__init__(self, parent, id,title ,size=(560, 600))
         self.value0=value0
         self.list = [("","","","","",""),("","","","","",""),("","","","","",""),("","","","","",""),("","","","","","")]
+        self.list2=['','','','','']
         self.initdb()
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
@@ -100,6 +102,7 @@ class SEDialog(wx.Dialog):
         , wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button23.SetBackgroundColour("#FF6600")
         self.m_button23.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button23)
         bSizer11.Add(self.m_button23, 1, wx.ALL | wx.EXPAND, 5)
 
         self.m_button24 = wx.Button(self, wx.ID_ANY, "编号："+self.list[1][0]+",名称："+self.list[1][1]
@@ -108,6 +111,7 @@ class SEDialog(wx.Dialog):
         , wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button24.SetBackgroundColour("#FF6600")
         self.m_button24.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button24)
         bSizer11.Add(self.m_button24, 1, wx.ALL | wx.EXPAND, 5)
 
         self.m_button25 = wx.Button(self, wx.ID_ANY, "编号："+self.list[2][0]+",名称："+self.list[2][1]
@@ -116,6 +120,7 @@ class SEDialog(wx.Dialog):
         , wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button25.SetBackgroundColour("#FF6600")
         self.m_button25.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button25)
         bSizer11.Add(self.m_button25, 1, wx.ALL | wx.EXPAND, 5)
 
         self.m_button26 = wx.Button(self, wx.ID_ANY, "编号："+self.list[3][0]+",名称："+self.list[3][1]
@@ -124,14 +129,16 @@ class SEDialog(wx.Dialog):
         , wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button26.SetBackgroundColour("#FF6600")
         self.m_button26.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button26)
         bSizer11.Add(self.m_button26, 1, wx.ALL | wx.EXPAND, 5)
 
         self.m_button27 = wx.Button(self, wx.ID_ANY, "编号："+self.list[4][0]+",名称："+self.list[4][1]
-                                    +"，所属店铺："+self.list[4][2]+",价格："+self.list[0][3]+"，评价："+self.list[4][4]+
+                                    +"，所属店铺："+self.list[4][2]+",价格："+self.list[4][3]+"，评价："+self.list[4][4]+
                                      "，销量："+self.list[4][5]
         , wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_button27.SetBackgroundColour("#FF6600")
         self.m_button27.SetForegroundColour("white")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button27)
         bSizer11.Add(self.m_button27, 1, wx.ALL | wx.EXPAND, 5)
 
         bSizer9.Add(bSizer11, 10, wx.EXPAND, 5)
@@ -154,10 +161,15 @@ class SEDialog(wx.Dialog):
             select = 'SELECT * FROM item_inf WHERE `商品名称`=\'' + self.value0 + '\''
             my = PyMySQL(select)
             self.list = my.select_data2(self.list)
-            print(self.list)
+           # print(self.list)
             self.m_button23.SetLabel("编号："+self.list[0][0]+",名称："+self.list[0][1]
                                     +"，所属店铺："+self.list[0][2]+",价格："+self.list[0][3]+"，评价："+self.list[0][4]+
                                      "，销量："+self.list[0][5])
+            self.list2[0] = self.list[0][0]
+            self.list2[1] = self.list[1][0]
+            self.list2[2] = self.list[2][0]
+            self.list2[3] = self.list[3][0]
+            self.list2[4] = self.list[4][0]
             self.m_button24.SetLabel("编号：" + self.list[1][0] + ",名称：" + self.list[1][1]
                                      + "，所属店铺：" + self.list[1][2] + ",价格：" + self.list[1][3] + "，评价：" + self.list[1][4]+
                                      "，销量："+self.list[1][5])
@@ -174,7 +186,12 @@ class SEDialog(wx.Dialog):
             select = 'SELECT * FROM item_inf WHERE `商品名称`=\'' + self.value0 + '\'ORDER BY `价格` DESC'
             my = PyMySQL(select)
             self.list = my.select_data2(self.list)
-            print(self.list)
+            #print(self.list)
+            self.list2[0] = self.list[0][0]
+            self.list2[1] = self.list[1][0]
+            self.list2[2] = self.list[2][0]
+            self.list2[3] = self.list[3][0]
+            self.list2[4] = self.list[4][0]
             self.m_button23.SetLabel("编号：" + self.list[0][0] + ",名称：" + self.list[0][1]
                                      + "，所属店铺：" + self.list[0][2] + ",价格：" + self.list[0][3] + "，评价：" + self.list[0][4]+
                                      "，销量："+self.list[0][5])
@@ -194,7 +211,12 @@ class SEDialog(wx.Dialog):
             select = 'SELECT * FROM item_inf WHERE `商品名称`=\'' + self.value0 + '\'ORDER BY `销量` DESC'
             my = PyMySQL(select)
             self.list = my.select_data2(self.list)
-            print(self.list)
+          #  print(self.list)
+            self.list2[0] = self.list[0][0]
+            self.list2[1] = self.list[1][0]
+            self.list2[2] = self.list[2][0]
+            self.list2[3] = self.list[3][0]
+            self.list2[4] = self.list[4][0]
             self.m_button23.SetLabel("编号：" + self.list[0][0] + ",名称：" + self.list[0][1]
                                      + "，所属店铺：" + self.list[0][2] + ",价格：" + self.list[0][3] + "，评价：" + self.list[0][4]+
                                      "，销量："+self.list[0][5])
@@ -214,7 +236,12 @@ class SEDialog(wx.Dialog):
             select = 'SELECT * FROM item_inf WHERE `商品名称`=\'' + self.value0 + '\'ORDER BY `评价` DESC'
             my = PyMySQL(select)
             self.list = my.select_data2(self.list)
-            print(self.list)
+           # print(self.list)
+            self.list2[0] = self.list[0][0]
+            self.list2[1] = self.list[1][0]
+            self.list2[2] = self.list[2][0]
+            self.list2[3] = self.list[3][0]
+            self.list2[4] = self.list[4][0]
             self.m_button23.SetLabel("编号：" + self.list[0][0] + ",名称：" + self.list[0][1]
                                      + "，所属店铺：" + self.list[0][2] + ",价格：" + self.list[0][3] + "，评价：" + self.list[0][4]+
                                      "，销量："+self.list[0][5])
@@ -234,7 +261,12 @@ class SEDialog(wx.Dialog):
             select = 'SELECT * FROM item_inf WHERE `商品名称`=\'' + self.value0 + '\''
             my = PyMySQL(select)
             self.list = my.select_data2(self.list)
-            print(self.list)
+           # print(self.list)
+            self.list2[0]= self.list[0][0]
+            self.list2[1]= self.list[1][0]
+            self.list2[2]= self.list[2][0]
+            self.list2[3]= self.list[3][0]
+            self.list2[4]= self.list[4][0]
             self.m_button23.SetLabel("编号：" + self.list[0][0] + ",名称：" + self.list[0][1]
                                      + "，所属店铺：" + self.list[0][2] + ",价格：" + self.list[0][3] + "，评价：" + self.list[0][4]+
                                      "，销量："+self.list[0][5])
@@ -250,6 +282,33 @@ class SEDialog(wx.Dialog):
             self.m_button27.SetLabel("编号：" + self.list[4][0] + ",名称：" + self.list[4][1]
                                      + "，所属店铺：" + self.list[4][2] + ",价格：" + self.list[4][3] + "，评价：" + self.list[4][4]+
                                      "，销量："+self.list[4][5])
+
+        elif event.GetEventObject() ==self.m_button23:
+            if self.list2[0]!="":
+                item = ITDialog(None, -1, "商品信息", self.list2[0])
+                item.ShowModal()
+                item.Destroy()
+
+        elif event.GetEventObject() == self.m_button24:
+            if self.list2[1]!="":
+                item = ITDialog(None, -1, "商品信息", self.list2[1])
+                item.ShowModal()
+                item.Destroy()
+        elif event.GetEventObject() == self.m_button25:
+            if self.list2[2]!="":
+                item = ITDialog(None, -1, "商品信息", self.list2[2])
+                item.ShowModal()
+                item.Destroy()
+        elif event.GetEventObject() == self.m_button26:
+            if self.list2[3]!="":
+                item = ITDialog(None, -1, "商品信息", self.list2[3])
+                item.ShowModal()
+                item.Destroy()
+        elif event.GetEventObject() == self.m_button27:
+            if self.list2[4]!="":
+                item = ITDialog(None, -1, "商品信息", self.list2[4])
+                item.ShowModal()
+                item.Destroy()
         else:
             print("No Button is clicked")
 
@@ -266,4 +325,9 @@ class SEDialog(wx.Dialog):
         select = 'SELECT * FROM item_inf WHERE `商品名称`=\''+self.value0+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
-        print(self.list)
+      #  print(self.list)
+        self.list2[0] = self.list[0][0]
+        self.list2[1] = self.list[1][0]
+        self.list2[2] = self.list[2][0]
+        self.list2[3] = self.list[3][0]
+        self.list2[4] = self.list[4][0]

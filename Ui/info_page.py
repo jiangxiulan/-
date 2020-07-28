@@ -6,7 +6,7 @@ from datebase import PyMySQL
 class InfoPage(wx.Dialog):
     def __init__(self,parent,title ,id,value):
         wx.Dialog.__init__(self, parent,title, id, size=( 300, 240))
-        print(value)
+        #print(value)
         self.value=value
         self.list = [("","","","","")]
         self.initdb()
@@ -33,4 +33,4 @@ class InfoPage(wx.Dialog):
         select = 'SELECT `商品编号`,`商品名称`,item_inf.数量,`价格`,item_inf.`评价` FROM item_inf WHERE `商品编号`=\''+self.value+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
-        print(self.list)
+        #print(self.list)

@@ -113,31 +113,37 @@ class MYpage(wx.Panel):
         select = 'SELECT purchase_inf.`商品编号`,user_inf.`收货地址`,count(*),purchase_inf.`时间` ' \
                  'FROM purchase_inf,user_inf ' \
                  'WHERE purchase_inf.`用户账号`=user_inf.`用户账号` and user_inf.`用户账号`=\''+value+'\'' \
-                 'GROUP BY purchase_inf.`时间`'
+                 'GROUP BY purchase_inf.`时间` order by purchase_inf.`时间` desc '
         my = PyMySQL(select)
-        self.list=[]
+        self.list=[('','','',''),('','','',''),('','','',''),('','','',''),('','','',''),('','','','')]
         self.list = my.select_data2(self.list)
         #print(self.list)
         self.total=0
-        for x in range(0,len(self.list)):
-            self.total=self.total+self.list[x][2]
-        self.m_staticText3.SetLabel('购买商品编号：'+self.list[0][0]+"购买时间："+str(self.list[0][3]))
-        if len(self.list)>=2:
-            self.m_staticText4.SetLabel('购买商品编号：' + self.list[1][0]+"购买时间："+str(self.list[1][3]))
-            if len(self.list)>=3:
-                self.m_staticText5.SetLabel('购买商品编号：' + self.list[2][0]+"购买时间："+str(self.list[2][3]))
-                if len(self.list) >= 4:
-                    self.m_staticText6.SetLabel('购买商品编号：' + self.list[3][0]+"购买时间："+str(self.list[3][3]))
-                    if len(self.list)>=5:
-                        self.m_staticText7.SetLabel('购买商品编号：' + self.list[4][0]+"购买时间："+str(self.list[4][3]))
-                        if len(self.list) >= 6:
-                            self.m_staticText8.SetLabel('购买商品编号：' + self.list[5][0]+"购买时间："+str(self.list[5][3]))
+        select1='SELECT COUNT(*) FROM purchase_inf WHERE purchase_inf.`用户账号`=\''+value+'\''
+        my1 = PyMySQL(select1)
+        self.total=my1.select_data(self.total)
+
+        if len(self.list)>=1:
+            self.m_staticText3.SetLabel('购买商品编号：' + self.list[0][0] + "购买时间：" + str(self.list[0][3]))
+            if len(self.list) >= 2:
+                self.m_staticText4.SetLabel('购买商品编号：' + self.list[1][0] + "购买时间：" + str(self.list[1][3]))
+                if len(self.list) >= 3:
+                    self.m_staticText5.SetLabel('购买商品编号：' + self.list[2][0] + "购买时间：" + str(self.list[2][3]))
+                    if len(self.list) >= 4:
+                        self.m_staticText6.SetLabel('购买商品编号：' + self.list[3][0] + "购买时间：" + str(self.list[3][3]))
+                        if len(self.list) >= 5:
+                            self.m_staticText7.SetLabel('购买商品编号：' + self.list[4][0] + "购买时间：" + str(self.list[4][3]))
+                            if len(self.list) >= 6:
+                                self.m_staticText8.SetLabel('购买商品编号：' + self.list[5][0] + "购买时间：" + str(self.list[5][3]))
         self.m_button1.SetLabel('收货地址：'+self.list[0][1])
         self.m_button3.SetLabel('购买统计：'+str(self.total))
 
     def Onclick_1(self, event):
         if userone.username=="":
-            print("未登录")
+            dlg = wx.MessageDialog(None, u"未登录", u"提示", wx.OK | wx.ICON_QUESTION)
+            if dlg.ShowModal() == wx.ID_OK:
+                dlg.Close(True)
+            dlg.Destroy()
         else:
             dialog = SPpage(None, -1, "我的店铺")
             dialog.ShowModal()
@@ -145,7 +151,10 @@ class MYpage(wx.Panel):
 
     def Onclick_2(self, event):
         if userone.username=="":
-            print("未登录")
+            dlg = wx.MessageDialog(None, u"未登录", u"提示", wx.OK | wx.ICON_QUESTION)
+            if dlg.ShowModal() == wx.ID_OK:
+                dlg.Close(True)
+            dlg.Destroy()
         else:
             self.connect(userone.username)
 

@@ -43,8 +43,8 @@ class LoginDialog(wx.Dialog):
 
 
 
-        m_choice1Choices = ["商家","一般用户"]
-        self.m_choice1 = wx.Choice(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_choice1Choices, 0)
+        self.m_choice1Choices = ["商家","一般用户"]
+        self.m_choice1 = wx.Choice(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, self.m_choice1Choices, 0)
         self.m_choice1.SetSelection(0)
         gSizer1.Add(self.m_choice1, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
@@ -86,29 +86,39 @@ class LoginDialog(wx.Dialog):
     # 定义一个对话框
 
     def OnClick(self,event):
-        create_table = 'create table stu(id int not null primary key auto_increment,name varchar(255) not null,age int, sex varchar(255))default charset=utf8'
+        # create_table = 'create table stu(id int not null primary key auto_increment,name varchar(255) not null,age int, sex varchar(255))default charset=utf8'
         select = 'select * from user_inf where 用户账号=\''+self.GetUsername()+'\''
-        update = 'update stu set name="明明" where id=2'
-        delete = 'delete from stu where id=9'
-        insert = 'insert into stu(name,age,sex) values("%s","%d","%s")' % ('小明', 2, "男")
-        #print(select)
+        # update = 'update stu set name="明明" where id=2'
+        # delete = 'delete from stu where id=9'
+        # insert = 'insert into stu(name,age,sex) values("%s","%d","%s")' % ('小明', 2, "男")
+        # #print(select)
 
-        order=select
-        my = PyMySQL(order)
+        my = PyMySQL(select)
         #my.create_table_func()
         #my.insert_date()
         #my.update_data()
         #my.delete_data()
-        str="12"
-        str=my.select_data(str)
-        #print(str)
-        #print(self.GetPassword())
-        if str==self.GetPassword():
-            self.m_staticText3.SetLabel(u"欢迎"+self.GetUsername())
-            userone.username=self.GetUsername()
+        str=['',]
+        str=my.select_data2(str)
+        if str==['']:
+            self.m_staticText3.SetLabel(u"未输入或账号不存在")
+            self.m_staticText3.SetForegroundColour("red")
+        elif str[0][1]==self.GetPassword() and str[0][2]==self.m_choice1Choices[self.m_choice1.Selection]:
+            self.m_staticText3.SetLabel(u"欢迎" + self.GetUsername())
+            userone.username = self.GetUsername()
+            self.Close(True)
             self.Destroy()
         else:
-            self.m_staticText3.SetLabel(u"输入错误")
+            self.m_staticText3.SetLabel(u"密码错误或者身份错误")
+            self.m_staticText3.SetForegroundColour("red")
+
+        # if str[0][1]==self.GetPassword():
+        #     self.m_staticText3.SetLabel(u"欢迎"+self.GetUsername())
+        #     userone.username=self.GetUsername()
+        #     self.Destroy()
+        # else:
+        #     self.m_staticText3.SetLabel(u"输入错误")
+        #     self.m_staticText3.SetForegroundColour("red")
 
 
 

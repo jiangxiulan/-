@@ -21,8 +21,8 @@ class FTpage(wx.Panel):
     def __init__(self,parent,id):
         wx.Panel.__init__(self,parent,id)
         #self.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBack)
-        self.list = []
-        self.list2 = []
+        self.list = [('',''),('',''),('',''),('',''),('','')]
+        self.list2 = [('',''),('',''),('',''),('',''),('','')]
         self.initdb()
         self.value=""
 
@@ -129,12 +129,12 @@ class FTpage(wx.Panel):
         select = 'SELECT  `商品名称`,`商品编号` FROM item_inf  order by `评价` DESC LIMIT 5'
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
-        print(self.list)
+        #print(self.list)
 
         select2 = 'SELECT  `店铺名称`,`店铺编号` FROM shop_info   LIMIT 5'
         my2 = PyMySQL(select2)
         self.list2 = my2.select_data2(self.list2)
-        print(self.list2)
+        #print(self.list2)
     def GetValue0(self):
         return self.m_textCtrl1.GetValue()
 
@@ -194,6 +194,8 @@ class FTpage(wx.Panel):
             item.ShowModal()
             item.Destroy()
         else:
+
+
             print("No Button is clicked")
 
 

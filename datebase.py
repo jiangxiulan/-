@@ -24,9 +24,11 @@ class PyMySQL(object):
         try:
             self.cursor.execute(self.order)
             self.conn.commit()
+            return 0
         except:
             print(traceback.format_exc())
             self.conn.rollback()
+            return 1
 
     def update_data(self):
         try:
@@ -44,40 +46,25 @@ class PyMySQL(object):
             print(traceback.format_exc())
             self.conn.rollback()
 
-    def select_data(self,str):
+    def select_data(self,total):
         self.cursor.execute(self.order)
 
         all_data = self.cursor.fetchall()
         for i in all_data:
-            print('查询结果为：{}'.format(i))
-            print(type(i[1]))
-            str=i[1]
-        return  str
+            total=i[0]
+        return  total
 
     def select_data2(self,list):
         self.cursor.execute(self.order)
 
         all_data = self.cursor.fetchall()
-        j=0
-        for i in all_data:
-            print('查询结果为：{}'.format(i))
-            print(type(i[0]))
-            list.insert(j,i)
-            j=j+1
-            print(list)
-
+        # print(all_data)
+        # print(len(list))
+        # print(len(all_data))
+        # print(min(len(list),len(all_data)))
+        for i in range(0,min(len(list),len(all_data))):
+            list[i]=''
+            list[i]=all_data[i]
+        # print(list)
         return  list
-#
-# if __name__ == '__main__':
-#     create_table = 'create table stu(id int not null primary key auto_increment,name varchar(255) not null,age int, sex varchar(255))default charset=utf8'
-#     select = 'select * from user_inf'
-#     update = 'update stu set name="明明" where id=2'
-#     delete = 'delete from stu where id=9'
-#     insert = 'insert into stu(name,age,sex) values("%s","%d","%s")' % ('小明', 2, "男")
-#     order=select
-#     my = PyMySQL(order)
-#     #my.create_table_func()
-#     #my.insert_date()
-#     #my.update_data()
-#     #my.delete_data()
-#     my.select_data()
+

@@ -121,18 +121,13 @@ class SPpage(wx.Dialog):
 
         bSizer12.Add(bSizer14, 4, wx.EXPAND, 5)
 
-        gSizer4 = wx.GridSizer(0, 2, 0, 0)
+        gSizer4 = wx.GridSizer(0, 3, 0, 0)
 
         self.m_staticText28 = wx.StaticText(self, wx.ID_ANY, u"增加修改商品", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText28.Wrap(-1)
 
 
         gSizer4.Add(self.m_staticText28, 0, wx.ALL, 5)
-
-        self.m_staticText33 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText33.Wrap(-1)
-        gSizer4.Add(self.m_staticText33, 0, wx.ALL, 5)
-
         self.m_bpButton18 = wx.BitmapButton(self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize,
                                             wx.BU_AUTODRAW)
         self.m_bpButton18.SetBackgroundColour("white")
@@ -145,43 +140,52 @@ class SPpage(wx.Dialog):
         self.m_staticText29 = wx.StaticText(self, wx.ID_ANY, u"商品编号", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText29.Wrap(-1)
         gSizer4.Add(self.m_staticText29, 0, wx.ALL, 5)
-
         self.m_textCtrl3 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer4.Add(self.m_textCtrl3, 0, wx.ALL, 5)
+        self.m_staticText36 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText36.Wrap(-1)
+        gSizer4.Add(self.m_staticText36, 0, wx.ALL, 5)
 
         self.m_staticText32 = wx.StaticText(self, wx.ID_ANY, u"商品名称", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText32.Wrap(-1)
         gSizer4.Add(self.m_staticText32, 0, wx.ALL, 5)
-
         self.m_textCtrl6 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer4.Add(self.m_textCtrl6, 0, wx.ALL, 5)
+        self.m_staticText37 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText37.Wrap(-1)
+        gSizer4.Add(self.m_staticText37, 0, wx.ALL, 5)
 
         self.m_staticText30 = wx.StaticText(self, wx.ID_ANY, u"商品数量", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText30.Wrap(-1)
         gSizer4.Add(self.m_staticText30, 0, wx.ALL, 5)
-
         self.m_textCtrl4 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer4.Add(self.m_textCtrl4, 0, wx.ALL, 5)
+        self.m_staticText38 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText38.Wrap(-1)
+        gSizer4.Add(self.m_staticText38, 0, wx.ALL, 5)
 
         self.m_staticText31 = wx.StaticText(self, wx.ID_ANY, u"商品价格", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText31.Wrap(-1)
         gSizer4.Add(self.m_staticText31, 0, wx.ALL, 5)
-
         self.m_textCtrl5 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer4.Add(self.m_textCtrl5, 0, wx.ALL, 5)
+        self.m_staticText39 = wx.StaticText(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText39.Wrap(-1)
+        gSizer4.Add(self.m_staticText39, 0, wx.ALL, 5)
 
         bSizer12.Add(gSizer4, 1, wx.EXPAND, 5)
 
         self.SetSizer(bSizer12)
         self.Layout()
-
         self.Centre(wx.BOTH)
+
     def OnMenuExit(self, event):
         self.Close()
     def OnCloseWindow(self, event):
         self.Destroy()
 
     def Onclick(self, event):
+        self.m_staticText35.SetLabel(u"")
         if event.GetEventObject() == self.m_bpButton10:
             dialog = InfoPage(None, -1, "商品信息",self.list[1][0])
             dialog.ShowModal()
@@ -215,11 +219,63 @@ class SPpage(wx.Dialog):
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_button11:
-            self.initdb2()
+            self.m_staticText36.SetLabel(u"")
+            self.m_staticText37.SetLabel(u"")
+            self.m_staticText38.SetLabel(u"")
+            self.m_staticText39.SetLabel(u"")
+            if self.m_textCtrl3.GetValue()=="":
+                self.m_staticText36.SetLabel(u"请输入商品编号")
+                self.m_staticText36.SetForegroundColour("red")
+            else:
+                self.initdb2()
+                self.m_textCtrl3.SetLabel(u"")
+                self.m_textCtrl4.SetLabel(u"")
+                self.m_textCtrl5.SetLabel(u"")
+                self.m_textCtrl6.SetLabel(u"")
         elif event.GetEventObject() == self.m_button12:
-            self.initdb3()
+            self.m_staticText36.SetLabel(u"")
+            self.m_staticText37.SetLabel(u"")
+            self.m_staticText38.SetLabel(u"")
+            self.m_staticText39.SetLabel(u"")
+            if self.m_textCtrl3.GetValue()=="" :
+                self.m_staticText36.SetLabel(u"请输入商品编号")
+                self.m_staticText36.SetForegroundColour("red")
+            if self.m_textCtrl4.GetValue()=="":
+                self.m_staticText38.SetLabel(u"请输入商品数量")
+                self.m_staticText38.SetForegroundColour("red")
+            if self.m_textCtrl5.GetValue()=="":
+                self.m_staticText39.SetLabel(u"请输入商品价格")
+                self.m_staticText39.SetForegroundColour("red")
+            if self.m_textCtrl3.GetValue() != "" and self.m_textCtrl4.GetValue() != "" and self.m_textCtrl5.GetValue() != "":
+                self.initdb3()
+                self.m_textCtrl3.SetLabel(u"")
+                self.m_textCtrl4.SetLabel(u"")
+                self.m_textCtrl5.SetLabel(u"")
+                self.m_textCtrl6.SetLabel(u"")
         elif event.GetEventObject() == self.m_button13:
-            self.initdb4()
+            self.m_staticText36.SetLabel(u"")
+            self.m_staticText37.SetLabel(u"")
+            self.m_staticText38.SetLabel(u"")
+            self.m_staticText39.SetLabel(u"")
+            if self.m_textCtrl3.GetValue() == "":
+                self.m_staticText36.SetLabel(u"请输入商品编号")
+                self.m_staticText36.SetForegroundColour("red")
+            if self.m_textCtrl4.GetValue() == "":
+                self.m_staticText38.SetLabel(u"请输入商品数量")
+                self.m_staticText38.SetForegroundColour("red")
+            if self.m_textCtrl5.GetValue() == "":
+                self.m_staticText39.SetLabel(u"请输入商品价格")
+                self.m_staticText39.SetForegroundColour("red")
+            if self.m_textCtrl6.GetValue() == "":
+                self.m_staticText37.SetLabel(u"请输入商品名称")
+                self.m_staticText37.SetForegroundColour("red")
+            if self.m_textCtrl3.GetValue() != "" and self.m_textCtrl4.GetValue() != "" \
+                    and self.m_textCtrl5.GetValue() != "" and self.m_textCtrl6.GetValue() != "":
+                self.initdb4()
+                self.m_textCtrl3.SetLabel(u"")
+                self.m_textCtrl4.SetLabel(u"")
+                self.m_textCtrl5.SetLabel(u"")
+                self.m_textCtrl6.SetLabel(u"")
         else:
             print("No Button is clicked")
 
@@ -229,24 +285,57 @@ class SPpage(wx.Dialog):
                  'AND shop_info.`所属用户`=\''+self.username+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
-        print(self.list)
-
     def initdb2(self):
-        delete = 'DELETE FROM item_inf WHERE 商品编号 =\''+self.m_textCtrl3.GetValue()+'\''
-        my = PyMySQL(delete)
-        my.delete_data()
-
+        i=0
+        for x in range(0,len(self.list)):
+            if self.list[x][0]==self.m_textCtrl3.GetValue():
+                delete = 'DELETE FROM item_inf WHERE 商品编号 =\'' + self.m_textCtrl3.GetValue() + '\''
+                my = PyMySQL(delete)
+                my.delete_data()
+                self.m_staticText35.SetLabel(u"删除成功!")
+                self.m_staticText35.SetForegroundColour("green")
+                self.list = [("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", "")]
+                self.initdb()
+                i=1
+                break
+        if i==0:
+            self.m_staticText35.SetLabel(u"没有该商品!")
+            self.m_staticText35.SetForegroundColour("red")
     def initdb3(self):
-        update = 'UPDATE item_inf set `数量` =\''+self.m_textCtrl4.GetValue()+'\',`价格`=\''\
-                 +self.m_textCtrl5.GetValue()+'\' WHERE `商品编号`=\''+self.m_textCtrl3.GetValue()+'\''
-        my = PyMySQL(update)
-        my.update_data()
+        i=0
+        for x in range(0,len(self.list)):
+            if self.list[x][0]==self.m_textCtrl3.GetValue():
+                update = 'UPDATE item_inf set `数量` =\'' + self.m_textCtrl4.GetValue() + '\',`价格`=\'' \
+                         + self.m_textCtrl5.GetValue() + '\' WHERE `商品编号`=\'' + self.m_textCtrl3.GetValue() + '\''
+                my = PyMySQL(update)
+                my.update_data()
+                self.m_staticText35.SetLabel(u"修改成功!")
+                self.m_staticText35.SetForegroundColour("green")
+                self.list = [("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", "")]
+                self.initdb()
+                i=1
+                break
+        if i==0:
+            self.m_staticText35.SetLabel(u"没有该商品!")
+            self.m_staticText35.SetForegroundColour("red")
+
     def initdb4(self):
         insert = 'INSERT INTO item_inf VALUES (\''+self.m_textCtrl3.GetValue()+'\',\''+self.m_textCtrl6.GetValue()\
                  +'\',\''+self.list[0][1]+'\',\''+self.m_textCtrl5.GetValue()+'\',\'0\',\''+self.m_textCtrl4.GetValue()\
                     +'\',\'0\')'
         my = PyMySQL(insert)
-        my.insert_date()
+        i=0
+        i=my.insert_date()
+        print(i)
+        if i==1:
+            self.m_staticText35.SetLabel(u"商品编号已存在!")
+            self.m_staticText35.SetForegroundColour("red")
+        else:
+            self.m_staticText35.SetLabel(u"添加成功!")
+            self.m_staticText35.SetForegroundColour("green")
+            self.list = [("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", ""), ("", "")]
+            self.initdb()
+
 
 
 

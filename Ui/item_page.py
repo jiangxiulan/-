@@ -25,7 +25,7 @@ class ITDialog(wx.Dialog):
         wx.Dialog.__init__(self, parent, id,title, size=(500,600))
         self.value=value
 
-        self.list=[]
+        self.list=[('','','','','','','')]
         self.initdb()
 
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
@@ -71,7 +71,7 @@ class ITDialog(wx.Dialog):
         self.m_staticText1.Wrap(-1)
         bSizer8.Add(self.m_staticText1, 1, wx.ALL, 5)
         self.m_spinCtrl1 = wx.SpinCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize,
-                                       wx.SP_ARROW_KEYS, 0, int(self.list[0][5]), 0)
+                                       wx.SP_ARROW_KEYS, 1, int(self.list[0][5]), 1)
         bSizer8.Add(self.m_spinCtrl1, 1, wx.ALL, 5)
 
         bSizer7.Add(bSizer8, 0, wx.ALL | wx.EXPAND, 5)
@@ -93,7 +93,7 @@ class ITDialog(wx.Dialog):
         self.Destroy()
     def getValue(self,value):
         self.value=value
-        print(self.value)
+        #print(self.value)
 
     def initdb(self):
         select = 'select `所属店铺`,item_inf.`价格`,item_inf.`评价`,shop_info.`店铺名称`,shop_info.`地址`,item_inf.`数量`,item_inf.`销量`' \
@@ -102,7 +102,6 @@ class ITDialog(wx.Dialog):
                  'item_inf.`商品编号`=\''+self.value+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
-        #print(self.list)
         #print("41545")
         #print(type(list[0]))
 
@@ -114,7 +113,7 @@ class ITDialog(wx.Dialog):
             dlg.Destroy()
         else:
             self.initdb1()
-            print(self.m_spinCtrl1.GetValue())
+            #print(self.m_spinCtrl1.GetValue())
             dlg = MessageDialog(None, -1, self.m_spinCtrl1.GetValue(), self.list[0][1])
             dlg.ShowModal()
             dlg.Destroy()
@@ -129,7 +128,9 @@ class ITDialog(wx.Dialog):
         self.value2=int(self.list[0][6])+self.m_spinCtrl1.GetValue()
         update = 'UPDATE item_inf SET `数量`=\''+str(self.value1)+'\', `销量`=\''+str(self.value2)+'\' WHERE `商品编号`=\''\
                  +self.value+'\''
-        print(update)
+        #
+
+        #print(update)
         my1 = PyMySQL(update)
         my1.update_data()
 

@@ -88,9 +88,9 @@ class MainFrame(wx.Frame):
         ###########################################################################################
         self.SetMenuBar(menubar)
         # 菜单中子菜单，事件行为的绑定即实现
-        wx.EVT_MENU(self, ID_EXIT, self.OnMenuExit)
-        wx.EVT_MENU(self, ID_ABOUT, self.OnMenuAbout)
-        wx.EVT_CLOSE(self, self.OnCloseWindow)
+        self.Bind(wx.EVT_MENU,self.OnMenuExit,id=ID_EXIT)
+        self.Bind(wx.EVT_MENU, self.OnMenuAbout, id=ID_ABOUT)
+        self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
 
     ###########################################################################################
     ###########################################################################################
