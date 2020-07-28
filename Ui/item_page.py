@@ -121,7 +121,7 @@ class ITDialog(wx.Dialog):
 
     def initdb1(self):
         insert = 'insert into purchase_inf ' \
-                 'values(SYSDATE(),\''+userone.username+'\',\''+self.value+'\',\''+str(self.m_spinCtrl1.GetValue())+'\')'
+                 'values(SYSDATE(),\''+userone.username+'\',\''+self.value+'\',\''+str(self.m_spinCtrl1.GetValue())+'\',\'0\')'
         my = PyMySQL(insert)
         my.insert_date()
         self.value1=int(self.list[0][5])-self.m_spinCtrl1.GetValue()

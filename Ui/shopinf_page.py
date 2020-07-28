@@ -87,31 +87,8 @@ class SIDialog(wx.Dialog):
 
         bSizer10.Add(gSizer2, 1, wx.EXPAND, 5)
 
-        bSizer8.Add(bSizer10, 4, wx.EXPAND, 5)
+        bSizer8.Add(bSizer10, 7, wx.EXPAND, 5)
 
-        bSizer11 = wx.BoxSizer(wx.VERTICAL)
-
-        self.m_staticText19 = wx.StaticText(self, wx.ID_ANY, u"评价一览", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText19.Wrap(-1)
-        bSizer11.Add(self.m_staticText19, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.m_staticText20 = wx.StaticText(self, wx.ID_ANY, u"评价1", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText20.Wrap(-1)
-        bSizer11.Add(self.m_staticText20, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.m_staticText21 = wx.StaticText(self, wx.ID_ANY, u"评价2", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText21.Wrap(-1)
-        bSizer11.Add(self.m_staticText21, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.m_staticText22 = wx.StaticText(self, wx.ID_ANY, u"评价3", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText22.Wrap(-1)
-        bSizer11.Add(self.m_staticText22, 0, wx.ALL | wx.EXPAND, 5)
-
-        self.m_staticText23 = wx.StaticText(self, wx.ID_ANY, u"评价4", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText23.Wrap(-1)
-        bSizer11.Add(self.m_staticText23, 0, wx.ALL | wx.EXPAND, 5)
-
-        bSizer8.Add(bSizer11, 4, wx.EXPAND, 5)
 
         self.SetSizer(bSizer8)
         self.Layout()

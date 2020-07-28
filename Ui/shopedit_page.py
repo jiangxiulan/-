@@ -187,35 +187,35 @@ class SPpage(wx.Dialog):
     def Onclick(self, event):
         self.m_staticText35.SetLabel(u"")
         if event.GetEventObject() == self.m_bpButton10:
-            dialog = InfoPage(None, -1, "商品信息",self.list[1][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[0][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton11:
-            dialog = InfoPage(None, -1, "商品信息",self.list[2][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[1][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton12:
-            dialog = InfoPage(None, -1, "商品信息",self.list[3][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[2][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton13:
-            dialog = InfoPage(None, -1, "商品信息",self.list[4][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[3][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton14:
-            dialog = InfoPage(None, -1, "商品信息",self.list[5][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[4][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton15:
-            dialog = InfoPage(None, -1, "商品信息",self.list[6][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[5][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton16:
-            dialog = InfoPage(None, -1, "商品信息",self.list[7][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[6][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_bpButton17:
-            dialog = InfoPage(None, -1, "商品信息",self.list[8][0])
+            dialog = InfoPage(None, -1, "商品信息",self.list[7][0])
             dialog.ShowModal()
             dialog.Destroy()
         elif event.GetEventObject() == self.m_button11:
@@ -326,7 +326,6 @@ class SPpage(wx.Dialog):
         my = PyMySQL(insert)
         i=0
         i=my.insert_date()
-        print(i)
         if i==1:
             self.m_staticText35.SetLabel(u"商品编号已存在!")
             self.m_staticText35.SetForegroundColour("red")

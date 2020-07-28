@@ -42,6 +42,12 @@ class FTpage(wx.Panel):
         self.m_textCtrl1 = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0)
         bSizer2.Add(self.m_textCtrl1, 1, wx.ALL | wx.EXPAND, 5)
 
+        self.m_button21 = wx.Button(self, wx.ID_ANY, u"刷新", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button21.SetBackgroundColour("#FF6600")
+        self.m_button21.SetForegroundColour("white")
+        bSizer2.Add(self.m_button21, 0, wx.ALL | wx.EXPAND, 5)
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button21)
+
         bSizer1.Add(bSizer2, 1, wx.EXPAND, 5)
 
         gSizer1 = wx.GridSizer(0, 2, 0, 0)
@@ -193,27 +199,20 @@ class FTpage(wx.Panel):
             #item.getValue(self.list2[4][1])
             item.ShowModal()
             item.Destroy()
+        elif event.GetEventObject() == self.m_button21:
+            self.initdb()
+            self.m_button2.SetLabel(self.list[0][1]+":"+self.list[0][0])
+            self.m_button3.SetLabel(self.list2[0][1]+":"+self.list2[0][0])
+            self.m_button4.SetLabel(self.list[1][1]+":"+self.list[1][0])
+            self.m_button5.SetLabel(self.list2[1][1]+":"+self.list2[1][0])
+            self.m_button6.SetLabel(self.list[2][1]+":"+self.list[2][0])
+            self.m_button7.SetLabel(self.list[2][1]+":"+self.list[2][0])
+            self.m_button8.SetLabel(self.list[3][1]+":"+self.list[3][0])
+            self.m_button9.SetLabel(self.list[3][1]+":"+self.list[3][0])
+            self.m_button10.SetLabel(self.list[4][1]+":"+self.list[4][0])
+            self.m_button11.SetLabel(self.list[4][1]+":"+self.list[4][0])
         else:
-
-
             print("No Button is clicked")
 
 
-
-    #
-    # def Onclick_1(self,event):
-    #     item=ITDialog(None,-1)
-    #     item.getValue(self.value)
-    #     item.ShowModal()
-    #     item.Destroy()
-    #
-    # def Onclick_2(self,event):
-    #     item=SIDialog(None,-1)
-    #     item.ShowModal()
-    #     item.Destroy()
-    #
-    # def Onclick(self, event):
-    #     item = SEDialog(None, -1)
-    #     item.ShowModal()
-    #     item.Destroy()
 

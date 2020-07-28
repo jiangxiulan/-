@@ -43,32 +43,37 @@ class MYpage(wx.Panel):
         bSizer3 = wx.BoxSizer(wx.VERTICAL)
 
         self.m_staticText2 = wx.StaticText(self, wx.ID_ANY, u"购买记录", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText2.Wrap(-1)
         bSizer3.Add(self.m_staticText2, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText3 = wx.StaticText(self, wx.ID_ANY, u"记录1:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText3.Wrap(-1)
-        bSizer3.Add(self.m_staticText3, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button11 = wx.Button(self, wx.ID_ANY, u"记录1:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button11)
+        self.m_button11.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button11, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText4 = wx.StaticText(self, wx.ID_ANY, u"记录2:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText4.Wrap(-1)
-        bSizer3.Add(self.m_staticText4, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button12 = wx.Button(self, wx.ID_ANY, u"记录2:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button12)
+        self.m_button12.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button12, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText5 = wx.StaticText(self, wx.ID_ANY, u"记录3:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText5.Wrap(-1)
-        bSizer3.Add(self.m_staticText5, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button13= wx.Button(self, wx.ID_ANY, u"记录3:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button13)
+        self.m_button13.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button13, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText6 = wx.StaticText(self, wx.ID_ANY, u"记录4:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText6.Wrap(-1)
-        bSizer3.Add(self.m_staticText6, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button14 = wx.Button(self, wx.ID_ANY, u"记录4:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button14)
+        self.m_button14.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button14, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText7 = wx.StaticText(self, wx.ID_ANY, u"记录5:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText7.Wrap(-1)
-        bSizer3.Add(self.m_staticText7, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button15 = wx.Button(self, wx.ID_ANY, u"记录5:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button15)
+        self.m_button15.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button15, 0, wx.ALL | wx.EXPAND, 5)
 
-        self.m_staticText8 = wx.StaticText(self, wx.ID_ANY, u"记录6:空", wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_staticText8.Wrap(-1)
-        bSizer3.Add(self.m_staticText8, 0, wx.ALL | wx.EXPAND, 5)
+        self.m_button16 = wx.Button(self, wx.ID_ANY, u"记录6:空", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.Bind(wx.EVT_BUTTON, self.Onclick_3, self.m_button16)
+        self.m_button16.SetBackgroundColour("white")
+        bSizer3.Add(self.m_button16, 0, wx.ALL | wx.EXPAND, 5)
 
         bSizer1.Add(bSizer3, 3, wx.EXPAND, 5)
 
@@ -110,7 +115,7 @@ class MYpage(wx.Panel):
         dialog.Destroy()
 
     def connect(self,value):
-        select = 'SELECT purchase_inf.`商品编号`,user_inf.`收货地址`,count(*),purchase_inf.`时间` ' \
+        select = 'SELECT purchase_inf.`商品编号`,user_inf.`收货地址`,purchase_inf.`评价`,purchase_inf.`时间` ' \
                  'FROM purchase_inf,user_inf ' \
                  'WHERE purchase_inf.`用户账号`=user_inf.`用户账号` and user_inf.`用户账号`=\''+value+'\'' \
                  'GROUP BY purchase_inf.`时间` order by purchase_inf.`时间` desc '
@@ -124,17 +129,17 @@ class MYpage(wx.Panel):
         self.total=my1.select_data(self.total)
 
         if len(self.list)>=1:
-            self.m_staticText3.SetLabel('购买商品编号：' + self.list[0][0] + "购买时间：" + str(self.list[0][3]))
+            self.m_button11.SetLabel('购买商品编号：' + self.list[0][0] + "购买时间：" + str(self.list[0][3]))
             if len(self.list) >= 2:
-                self.m_staticText4.SetLabel('购买商品编号：' + self.list[1][0] + "购买时间：" + str(self.list[1][3]))
+                self.m_button12.SetLabel('购买商品编号：' + self.list[1][0] + "购买时间：" + str(self.list[1][3]))
                 if len(self.list) >= 3:
-                    self.m_staticText5.SetLabel('购买商品编号：' + self.list[2][0] + "购买时间：" + str(self.list[2][3]))
+                    self.m_button13.SetLabel('购买商品编号：' + self.list[2][0] + "购买时间：" + str(self.list[2][3]))
                     if len(self.list) >= 4:
-                        self.m_staticText6.SetLabel('购买商品编号：' + self.list[3][0] + "购买时间：" + str(self.list[3][3]))
+                        self.m_button14.SetLabel('购买商品编号：' + self.list[3][0] + "购买时间：" + str(self.list[3][3]))
                         if len(self.list) >= 5:
-                            self.m_staticText7.SetLabel('购买商品编号：' + self.list[4][0] + "购买时间：" + str(self.list[4][3]))
+                            self.m_button15.SetLabel('购买商品编号：' + self.list[4][0] + "购买时间：" + str(self.list[4][3]))
                             if len(self.list) >= 6:
-                                self.m_staticText8.SetLabel('购买商品编号：' + self.list[5][0] + "购买时间：" + str(self.list[5][3]))
+                                self.m_button16.SetLabel('购买商品编号：' + self.list[5][0] + "购买时间：" + str(self.list[5][3]))
         self.m_button1.SetLabel('收货地址：'+self.list[0][1])
         self.m_button3.SetLabel('购买统计：'+str(self.total))
 
@@ -158,6 +163,113 @@ class MYpage(wx.Panel):
         else:
             self.connect(userone.username)
 
+    def Onclick_3(self,event):
+        if userone.username == "":
+            dlg = wx.MessageDialog(None, u"未登录", u"提示", wx.OK | wx.ICON_QUESTION)
+            if dlg.ShowModal() == wx.ID_OK:
+                dlg.Close(True)
+            dlg.Destroy()
+            return
+        if event.GetEventObject() == self.m_button11:
+            if self.list[0][2]=="0":
+                dlg = MessDialog(None, -1,self.list[0][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+                self.connect(userone.username)
+            elif self.list[0][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分："+self.list[0][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        elif event.GetEventObject() == self.m_button12:
+            if self.list[1][2]=="0":
+                dlg = MessDialog(None, -1,self.list[1][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+            elif self.list[1][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分：" + self.list[1][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        elif event.GetEventObject() == self.m_button13:
+            if self.list[2][2]=="0":
+                dlg = MessDialog(None, -1,self.list[2][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+            elif self.list[2][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分：" + self.list[2][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        elif event.GetEventObject() == self.m_button14:
+            if self.list[3][2]=="0":
+                dlg = MessDialog(None, -1,self.list[3][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+            elif self.list[3][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分：" + self.list[3][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        elif event.GetEventObject() == self.m_button15:
+            if self.list[4][2]=="0":
+                dlg = MessDialog(None, -1,self.list[4][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+            elif self.list[4][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分：" + self.list[4][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        elif event.GetEventObject() == self.m_button16:
+            if self.list[5][2]=="0":
+                dlg = MessDialog(None, -1,self.list[5][0])
+                dlg.ShowModal()
+                dlg.Destroy()
+            elif self.list[5][2]!="":
+                dlg = wx.MessageDialog(None, "已评价，评分：" + self.list[5][2], u"提示", wx.OK | wx.ICON_QUESTION)
+                if dlg.ShowModal() == wx.ID_OK:
+                    dlg.Close(True)
+                dlg.Destroy()
+        else:
+            print("No Button is clicked")
+
+class MessDialog(wx.Dialog):
+    def __init__(self, parent, id,value):
+        self.value1=value
+        wx.Dialog.__init__(self, parent, id, '评价', size=(300, 200))
+        self.sizer1 = wx.BoxSizer(wx.VERTICAL)
+        self.sizer1.Add(wx.StaticText(self, -1, u"未评价！"),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=20)
+        self.sizer1.Add(wx.StaticText(self, -1, u"请评价："),
+                        0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=10)
+
+        self.slider=wx.Slider( self, wx.ID_ANY, 1.0, 1.2, 5.0,style=wx.SL_AUTOTICKS|wx.SL_LABELS)
+        self.sizer1.Add(self.slider,0, wx.ALIGN_CENTER_HORIZONTAL | wx.TOP, border=10)
+        self.button1=wx.Button(self, wx.ID_ANY,"确认")
+        self.sizer1.Add(self.button1, 0, wx.ALIGN_CENTER | wx.BOTTOM, border=20)
+        self.Bind(wx.EVT_BUTTON, self.Onclick, self.button1)
+        self.SetSizer(self.sizer1)
+
+    def GetValue(self):
+        return self.slider.GetValue()
+
+    def Onclick(self,event):
+        self.value = str(self.GetValue())
+        update1 = 'UPDATE purchase_inf SET `评价`=\'' + self.value + '\' WHERE `商品编号`=\'' + self.value1 + '\''
+        my = PyMySQL(update1)
+        my.update_data()
+        update2 = 'UPDATE item_inf SET `评价`=CAST(((CAST(`评价` AS FLOAT)+' + self.value + ')/2.0)AS CHAR)' \
+                                                                                        'WHERE `商品编号`=\'' + \
+                  self.value1+ '\''
+        my = PyMySQL(update2)
+        my.update_data()
+        self.Close(True)
+
+    def OnMenuExit(self, event):
+        self.Close()
+    def OnCloseWindow(self, event):
+        self.Destroy()
 
 
 
