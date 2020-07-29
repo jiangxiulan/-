@@ -149,6 +149,11 @@ class MYpage(wx.Panel):
             if dlg.ShowModal() == wx.ID_OK:
                 dlg.Close(True)
             dlg.Destroy()
+        elif userone.usertype=="一般用户":
+            dlg = wx.MessageDialog(None, u"您不是商家", u"提示", wx.OK | wx.ICON_QUESTION)
+            if dlg.ShowModal() == wx.ID_OK:
+                dlg.Close(True)
+            dlg.Destroy()
         else:
             dialog = SPpage(None, -1, "我的店铺")
             dialog.ShowModal()

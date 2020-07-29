@@ -106,6 +106,7 @@ class LoginDialog(wx.Dialog):
         elif str[0][1]==self.GetPassword() and str[0][2]==self.m_choice1Choices[self.m_choice1.Selection]:
             self.m_staticText3.SetLabel(u"欢迎" + self.GetUsername())
             userone.username = self.GetUsername()
+            userone.usertype = self.m_choice1Choices[self.m_choice1.Selection]
             self.Close(True)
             self.Destroy()
         else:
