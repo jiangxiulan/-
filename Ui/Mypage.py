@@ -101,7 +101,9 @@ class MYpage(wx.Panel):
         bSizer5.Add(self.m_staticText10, 0, wx.ALL | wx.EXPAND, 5)
 
         bSizer1.Add(bSizer5, 3, wx.EXPAND, 5)
-
+        if userone.username!="":
+            self.m_staticText1.SetLabel(userone.username)
+            self.connect(userone.username)
         self.SetSizer(bSizer1)
         self.Layout()
 
@@ -122,11 +124,16 @@ class MYpage(wx.Panel):
         my = PyMySQL(select)
         self.list=[('','','',''),('','','',''),('','','',''),('','','',''),('','','',''),('','','','')]
         self.list = my.select_data2(self.list)
-        #print(self.list)
+
         self.total=0
         select1='SELECT COUNT(*) FROM purchase_inf WHERE purchase_inf.`用户账号`=\''+value+'\''
         my1 = PyMySQL(select1)
         self.total=my1.select_data(self.total)
+
+        self.str1=""
+        select2 = 'SELECT `收货地址` FROM user_inf WHERE user_inf.`用户账号`=\'' + value + '\''
+        my2 = PyMySQL(select2)
+        self.str1 = my2.select_data(self.str1)
 
         if len(self.list)>=1:
             self.m_button11.SetLabel('购买商品编号：' + self.list[0][0] + "购买时间：" + str(self.list[0][3]))
@@ -140,7 +147,8 @@ class MYpage(wx.Panel):
                             self.m_button15.SetLabel('购买商品编号：' + self.list[4][0] + "购买时间：" + str(self.list[4][3]))
                             if len(self.list) >= 6:
                                 self.m_button16.SetLabel('购买商品编号：' + self.list[5][0] + "购买时间：" + str(self.list[5][3]))
-        self.m_button1.SetLabel('收货地址：'+self.list[0][1])
+        self.m_button1.SetLabel('收货地址：'+self.str1)
+        #print(self.list[0][1])
         self.m_button3.SetLabel('购买统计：'+str(self.total))
 
     def Onclick_1(self, event):

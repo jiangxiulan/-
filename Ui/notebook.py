@@ -18,14 +18,4 @@ class FXNoteBook(wx.Notebook):
         self.txPanel = FTpage(self, -1)
         self.panels.append(self.txPanel)
         self.AddPage(self.panels[0], u"首页")
-        ############################################################
-        self.rcPanel = RCpage(self, -1)
-        self.panels.append(self.rcPanel)
-        self.AddPage(self.panels[1], u"推荐")
-        ############################################################
-        self.myPanel = MYpage(self, -1)
-        self.panels.append(self.myPanel)
-        self.AddPage(self.panels[2], u"账号")
-
-    ############################################################
 

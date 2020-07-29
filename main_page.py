@@ -5,9 +5,15 @@
 import wx
 import time
 import os
+
+from Mypage import MYpage
+from firstpage import FTpage
 from notebook import FXNoteBook
 
 ######################################################
+from recommendpage import RCpage
+from user_list import userone
+
 Version = "1.0"
 ReleaseDate = "2020-7-29"
 ######################################################
@@ -20,7 +26,7 @@ ID_ABOUT = 201
 
 class MainFrame(wx.Frame):
     def __init__(self, parent, id, title=''):
-        wx.Frame.__init__(self, parent, id, title, size=(500, 600))
+        wx.Frame.__init__(self, parent, id, title, size=(600, 600))
         ###########################################################################################
         ###########################################################################################
         ## 状态栏的创建
@@ -46,7 +52,42 @@ class MainFrame(wx.Frame):
         ###########################################################################################
         ## 面板的显示
         # Attributes
+        self.SetBackgroundColour("white")
+        self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
+
+        bSizer2 = wx.BoxSizer(wx.HORIZONTAL)
+
+        bSizer3 = wx.BoxSizer(wx.VERTICAL)
+
+        self.m_bpButton1 = wx.BitmapButton(self, wx.ID_ANY, wx.Bitmap(cwd + "\\images\\shop.png"), wx.DefaultPosition, wx.DefaultSize,
+                                           wx.BU_AUTODRAW)
+        bSizer3.Add(self.m_bpButton1, 0, wx.ALL| wx.EXPAND, 5)
+
+        self.m_button4 = wx.Button(self, wx.ID_ANY, u"首页", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button4.SetBackgroundColour("#FFA500")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button4)
+        bSizer3.Add(self.m_button4, 0, wx.ALL | wx.EXPAND, 5)
+
+        self.m_button5 = wx.Button(self, wx.ID_ANY, u"推荐", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button5.SetBackgroundColour("#FFA500")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button5)
+        bSizer3.Add(self.m_button5, 0, wx.ALL |  wx.EXPAND, 5)
+
+        self.m_button6 = wx.Button(self, wx.ID_ANY, u"账号", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_button6.SetBackgroundColour("#FFA500")
+        self.Bind(wx.EVT_BUTTON, self.OnClick, self.m_button6)
+        bSizer3.Add(self.m_button6, 0, wx.ALL |  wx.EXPAND, 5)
+
+        bSizer2.Add(bSizer3, 1, wx.EXPAND, 5)
         self.fxnotebook = FXNoteBook(self, -1)
+
+        bSizer2.Add(self.fxnotebook, 5, wx.EXPAND | wx.ALL, 5)
+
+        self.SetSizer(bSizer2)
+        self.Layout()
+
+        self.Centre(wx.BOTH)
+
 
     def setupIcon(self):
         ###########################################################################################
@@ -123,6 +164,23 @@ class MainFrame(wx.Frame):
 
     def OnCloseWindow(self, event):
         self.Destroy()
+
+    def OnClick(self,event):
+        if event.GetEventObject() == self.m_button4:
+            self.fxnotebook.DeleteAllPages()
+            self.txPanel = FTpage(self.fxnotebook, -1)
+            self.fxnotebook.panels[0]=self.txPanel
+            self.fxnotebook.AddPage(self.fxnotebook.panels[0], u"首页")
+        elif event.GetEventObject() == self.m_button5:
+            self.fxnotebook.DeleteAllPages()
+            self.rcPanel = RCpage(self.fxnotebook, -1)
+            self.fxnotebook.panels[0]=self.rcPanel
+            self.fxnotebook.AddPage(self.fxnotebook.panels[0], u"推荐")
+        elif   event.GetEventObject() == self.m_button6:
+            self.fxnotebook.DeleteAllPages()
+            self.myPanel = MYpage(self.fxnotebook, -1)
+            self.fxnotebook.panels[0]=self.myPanel
+            self.fxnotebook.AddPage(self.fxnotebook.panels[0], u"账号")
 
 
 ## 定义一个对话框
