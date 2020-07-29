@@ -20,9 +20,7 @@ cwd=os.getcwd()
 class SPpage(wx.Dialog):
     def __init__(self,parent, id,title):
         wx.Dialog.__init__(self, parent, id,title, size=(500,600))
-        self.username=""
-        if userone.username!="":
-            self.username=userone.username
+
 
         self.list = [("",""), ("",""), ("",""), ("",""),("",""),("",""),("",""),("","")]
         self.initdb()
@@ -32,7 +30,7 @@ class SPpage(wx.Dialog):
         bSizer12 = wx.BoxSizer(wx.VERTICAL)
         bSizer13 = wx.BoxSizer(wx.VERTICAL)
 
-        self.m_staticText24 = wx.StaticText(self, wx.ID_ANY, self.username+"商铺", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.m_staticText24 = wx.StaticText(self, wx.ID_ANY, userone.username+"商铺", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText24.Wrap(-1)
         bSizer13.Add(self.m_staticText24, 1, wx.ALL | wx.EXPAND, 5)
 
@@ -282,9 +280,15 @@ class SPpage(wx.Dialog):
     def initdb(self):
         select = 'SELECT item_inf.`商品编号`,shop_info.`店铺编号` FROM shop_info,item_inf ' \
                  'WHERE shop_info.`店铺编号`=item_inf.`所属店铺` ' \
-                 'AND shop_info.`所属用户`=\''+self.username+'\''
+                 'AND shop_info.`所属用户`=\''+userone.username+'\''
         my = PyMySQL(select)
         self.list = my.select_data2(self.list)
+        print(self.list)
+        select = 'SELECT shop_info.`店铺编号` FROM shop_info ' \
+                 'WHERE  shop_info.`所属用户`=\'' + userone.username + '\''
+        my = PyMySQL(select)
+        self.str=""
+        self.str = my.select_data(self.str)
     def initdb2(self):
         i=0
         for x in range(0,len(self.list)):
@@ -321,7 +325,7 @@ class SPpage(wx.Dialog):
 
     def initdb4(self):
         insert = 'INSERT INTO item_inf VALUES (\''+self.m_textCtrl3.GetValue()+'\',\''+self.m_textCtrl6.GetValue()\
-                 +'\',\''+self.list[0][1]+'\',\''+self.m_textCtrl5.GetValue()+'\',\'0\',\''+self.m_textCtrl4.GetValue()\
+                 +'\',\''+self.str+'\',\''+self.m_textCtrl5.GetValue()+'\',\'0\',\''+self.m_textCtrl4.GetValue()\
                     +'\',\'0\')'
         my = PyMySQL(insert)
         i=0

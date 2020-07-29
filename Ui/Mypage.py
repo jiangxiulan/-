@@ -269,12 +269,22 @@ class MessDialog(wx.Dialog):
 
     def Onclick(self,event):
         self.value = str(self.GetValue())
+
         update1 = 'UPDATE purchase_inf SET `评价`=\'' + self.value + '\' WHERE `商品编号`=\'' + self.value1 + '\''
         my = PyMySQL(update1)
         my.update_data()
-        update2 = 'UPDATE item_inf SET `评价`=CAST(((CAST(`评价` AS FLOAT)+' + self.value + ')/2.0)AS CHAR)' \
+        str_1=[]
+        select='SELECT `评价` FROM item_inf WHERE `商品编号`=\''+self.value1+'\''
+        my2 = PyMySQL(select)
+        str_1=my2.select_data(str_1)
+        if str_1=="0":
+            update2='' \
+                    'UPDATE item_inf SET `评价`=\''+self.value+'\' WHERE `商品编号`=\''+ self.value1 +'\''
+        else:
+            update2 ='UPDATE item_inf SET `评价`=CAST(((CAST(`评价` AS FLOAT)+' + self.value + ')/2.0)AS CHAR)' \
                                                                                         'WHERE `商品编号`=\'' + \
                   self.value1+ '\''
+        #print(update2)
         my = PyMySQL(update2)
         my.update_data()
         self.Close(True)
